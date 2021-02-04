@@ -4,19 +4,21 @@
     <ul>
       <router-link to="/pagehome" tag="li">
         <i class="iconfont icon-dianying"></i>
-<<<<<<< HEAD
         <p>首页测试</p>
       </router-link>
       <router-link to="/plan" tag="li">
         <i class="iconfont icon-wode"></i>
         <p>计划测试</p>
-=======
         <p>首页1</p>
       </router-link>
       <router-link to="/plan" tag="li">
         <i class="iconfont icon-wode"></i>
         <p>计划2</p>
->>>>>>> 975dc82d8ba448ab4d50194faf1fe2a74c77718a
+        <p>首页1</p>
+      </router-link>
+      <router-link to="/plan" tag="li">
+        <i class="iconfont icon-wode"></i>
+        <p>计划2</p>
       </router-link>
       <router-link to="/motion" tag="li">
         <i class="iconfont icon-yingyuan"></i>
