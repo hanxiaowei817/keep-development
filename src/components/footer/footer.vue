@@ -4,19 +4,19 @@
     <ul>
       <router-link to="/pagehome" tag="li">
         <i class="iconfont icon-dianying"></i>
-        <p>首页</p>
+        <p>首页测试</p>
       </router-link>
       <router-link to="/plan" tag="li">
         <i class="iconfont icon-wode"></i>
-        <p>计划</p>
+        <p>计划测试</p>
       </router-link>
       <router-link to="/motion" tag="li">
         <i class="iconfont icon-yingyuan"></i>
-        <p>运动</p>
+        <p>运动测试</p>
       </router-link>
       <router-link to="/shopping" tag="li">
         <i class="iconfont icon-yingyuan"></i>
-        <p>商城</p>
+        <p>商城测试</p>
       </router-link>
       <router-link to="/my" tag="li">
         <i class="iconfont icon-yingyuan"></i>
