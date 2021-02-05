@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    韩骁卫
     <router-view></router-view>
   </div>
 </template>
