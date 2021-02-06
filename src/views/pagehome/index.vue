@@ -2,6 +2,76 @@
 <template>
   <div class="">
     <Footer></Footer>
+    <van-sticky>
+      <div>
+        <h3 style="height: 40px; line-height: 40px; background: red">
+          首页123
+          <van-icon name="search" />
+          <van-icon name="friends" />
+        </h3>
+      </div>
+    </van-sticky>
+    <van-tabs v-model="active">
+      <van-tab title="关注">
+        <p id="follow"></p>
+      </van-tab>
+      <van-tab title="动态">
+        <p id="dynamic"></p>
+      </van-tab>
+      <van-tab title="圈子">
+        <p id="circle"></p>
+      </van-tab>
+    </van-tabs>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
   </div>
 </template>
 
@@ -37,5 +107,20 @@ export default {
   activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 };
 </script>
-<style lang='scss' scoped>
+<style scoped>
+#follow {
+  width: 100%;
+  height: 500px;
+  background: coral;
+}
+#dynamic {
+  width: 100%;
+  height: 500px;
+  background: cornflowerblue;
+}
+#circle {
+  width: 100%;
+  height: 500px;
+  background: crimson;
+}
 </style>
