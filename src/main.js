@@ -3,7 +3,7 @@ import App from './App.vue'
 //引入路由
 import router from './router'
 
-Vue.config.productionTip = false
+
 import {
   Search,
   Sticky,
@@ -44,6 +44,15 @@ import 'vant/lib/nav-bar/style';
 import { NavBar } from 'vant';
 Vue.use(NavBar);
 
+// 引入mint-ui
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+
+
+Vue.use(MintUI)
+
+
+Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
   //注册 测试测试测试测试
