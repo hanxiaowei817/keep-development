@@ -1,6 +1,245 @@
 <!--  -->
 <template>
-  <div class="">
+  <div class="shopping">
+    <van-sticky>
+      <van-search v-model="value" placeholder="请输入搜索关键词" />
+    </van-sticky>
+    <!-- 轮播图 -->
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+      <van-swipe-item v-for="(itme, index) in images" :key="index">
+        <img :src="itme" alt="" />
+      </van-swipe-item>
+    </van-swipe>
+
+    <van-grid>
+      <van-grid-item icon="photo-o" text="家用智能" />
+      <van-grid-item icon="photo-o" text="健康食品" />
+      <van-grid-item icon="photo-o" text="运动手环" />
+      <van-grid-item icon="photo-o" text="男女服饰" />
+    </van-grid>
+    <van-grid>
+      <van-grid-item icon="photo-o" text="室内健身" />
+      <van-grid-item icon="photo-o" text="户外跑步" />
+      <van-grid-item icon="photo-o" text="运动护具" />
+      <van-grid-item icon="photo-o" text="keep周边" />
+    </van-grid>
+
+    <!-- 倒计时 -->
+    <div class="daoji">
+      <van-count-down :time="time">
+        <template #default="timeData"
+          >限时秒杀：
+          <span class="block">{{ timeData.hours }}</span>
+          <span class="colon">:</span>
+          <span class="block">{{ timeData.minutes }}</span>
+          <span class="colon">:</span>
+          <span class="block">{{ timeData.seconds }}</span>
+        </template>
+      </van-count-down>
+      <div class="van">
+        <dl>
+          <dt>
+            <img
+              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              alt=""
+            />
+          </dt>
+          <dd>￥20 <del>￥199</del></dd>
+        </dl>
+        <dl>
+          <dt>
+            <img
+              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              alt=""
+            />
+          </dt>
+          <dd>￥20<del>￥199</del></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="daoji daoji2">
+      <p>新品情报局</p>
+      <div class="van">
+        <dl>
+          <dt>
+            <img
+              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              alt=""
+            />
+          </dt>
+          <dd>￥20 <del>￥199</del></dd>
+        </dl>
+        <dl>
+          <dt>
+            <img
+              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              alt=""
+            />
+          </dt>
+          <dd>￥20<del>￥199</del></dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 倒计时 -->
+    <div class="daoji">
+      <p>拼团嗨购</p>
+      <div class="van">
+        <dl>
+          <dt>
+            <img
+              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              alt=""
+            />
+          </dt>
+          <dd>￥20 <del>￥199</del></dd>
+        </dl>
+        <dl>
+          <dt>
+            <img
+              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              alt=""
+            />
+          </dt>
+          <dd>￥20<del>￥199</del></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="daoji daoji2">
+      <p>会员专区</p>
+      <div class="van">
+        <dl>
+          <dt>
+            <img
+              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              alt=""
+            />
+          </dt>
+          <dd>￥20 <del>￥199</del></dd>
+        </dl>
+        <dl>
+          <dt>
+            <img
+              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              alt=""
+            />
+          </dt>
+          <dd>￥20<del>￥199</del></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="hotlist-banner">
+      <div class="hotlist">
+        <img
+          src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=963641137,2157786980&fm=26&gp=0.jpg"
+          alt=""
+        />
+        <div class="equipment">
+          <dl>
+            <dt><h3>智能装备榜</h3></dt>
+            <dd><p>记录数据</p></dd>
+          </dl>
+          <dl>
+            <dt>
+              <img
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+                alt=""
+              />
+            </dt>
+            <dd>￥20 <del>￥199</del></dd>
+          </dl>
+          <dl>
+            <dt>
+              <img
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+                alt=""
+              />
+            </dt>
+            <dd>￥20 <del>￥199</del></dd>
+          </dl>
+          <dl>
+            <dt>
+              <img
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+                alt=""
+              />
+            </dt>
+            <dd>￥20 <del>￥199</del></dd>
+          </dl>
+        </div>
+      </div>
+      <div class="hotlist">
+        <div class="equipment">
+          <dl>
+            <dt><h3>智能装备榜</h3></dt>
+            <dd><p>记录数据</p></dd>
+          </dl>
+          <dl>
+            <dt>
+              <img
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+                alt=""
+              />
+            </dt>
+            <dd>￥20 <del>￥199</del></dd>
+          </dl>
+          <dl>
+            <dt>
+              <img
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+                alt=""
+              />
+            </dt>
+            <dd>￥20 <del>￥199</del></dd>
+          </dl>
+          <dl>
+            <dt>
+              <img
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+                alt=""
+              />
+            </dt>
+            <dd>￥20 <del>￥199</del></dd>
+          </dl>
+        </div>
+      </div>
+      <div class="hotlist">
+        <div class="equipment">
+          <dl>
+            <dt><h3>智能装备榜</h3></dt>
+            <dd><p>记录数据</p></dd>
+          </dl>
+          <dl>
+            <dt>
+              <img
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+                alt=""
+              />
+            </dt>
+            <dd>￥20 <del>￥199</del></dd>
+          </dl>
+          <dl>
+            <dt>
+              <img
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+                alt=""
+              />
+            </dt>
+            <dd>￥20 <del>￥199</del></dd>
+          </dl>
+          <dl>
+            <dt>
+              <img
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+                alt=""
+              />
+            </dt>
+            <dd>￥20 <del>￥199</del></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
     <Footer></Footer>
   </div>
 </template>
@@ -9,6 +248,7 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 import Footer from "../../components/footer/footer";
+
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {
@@ -16,7 +256,15 @@ export default {
   },
   data() {
     //这里存放数据
-    return {};
+    return {
+      value: "",
+      images: [
+        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3896601762,374333792&fm=26&gp=0.jpg",
+        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3488147428,3962514625&fm=26&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=831479040,1172852968&fm=26&gp=0.jpg",
+      ],
+      time: 30 * 60 * 60 * 1000,
+    };
   },
   //监听属性 类似于data概念
   computed: {},
@@ -37,5 +285,99 @@ export default {
   activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 };
 </script>
-<style lang='scss' scoped>
+<style  scoped>
+/* 轮播u图 */
+.my-swipe .van-swipe-item {
+  color: #fff;
+  font-size: 20px;
+  line-height: 150px;
+  text-align: center;
+  background-color: #39a9ed;
+}
+.my-swipe .van-swipe-item img {
+  width: 100%;
+  height: 200px;
+}
+/* 倒计时 */
+.colon {
+  display: inline-block;
+  margin: 0 3px;
+  color: #ee0a24;
+}
+.block {
+  display: inline-block;
+  width: 22px;
+  color: #fff;
+  font-size: 0.8rem;
+  text-align: center;
+  background-color: #ee0a24;
+}
+.daoji {
+  width: 45%;
+  height: 150px;
+  margin-left: 1.2rem;
+  margin-bottom: 0.5rem;
+  float: left;
+}
+.daoji2 {
+  margin-left: 0.6rem;
+}
+.daoji,
+.daoji2 p {
+  font-size: 0.8rem;
+}
+.van {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+.van dl {
+  width: 50%;
+  height: 90%;
+  float: left;
+}
+.van dl dt img {
+  width: 85%;
+  height: 85%;
+}
+.van dl dd {
+  font-size: 1rem;
+  color: red;
+}
+.van dl dd del {
+  font-size: 0.5rem;
+  color: gray;
+}
+.hotlist-banner {
+  overflow: hidden;
+  width: 100%;
+  height: 40rem;
+  background: red;
+}
+.hotlist-banner .hotlist {
+  width: 100%;
+  height: 30%;
+}
+.hotlist img {
+  width: 100%;
+  height: 6rem;
+}
+.equipment h3 {
+  font-size: 0.7rem;
+  margin-top: 2.2rem;
+}
+.equipment p {
+  font-size: 0.4rem;
+}
+.hotlist .equipment dl {
+  width: 20%;
+  height: 5rem;
+  float: left;
+  margin-left: 0.5rem;
+}
+
+.hotlist .equipment img {
+  width: 100%;
+  height: 80%;
+}
 </style>
