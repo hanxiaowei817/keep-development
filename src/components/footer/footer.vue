@@ -8,25 +8,15 @@
       </router-link>
       <router-link to="/plan" tag="li">
         <i class="iconfont icon-wode"></i>
-        <p>计划测试</p>
-        <p>首页1</p>
-      </router-link>
-      <router-link to="/plan" tag="li">
-        <i class="iconfont icon-wode"></i>
-        <p>计划2</p>
-        <p>首页1</p>
-      </router-link>
-      <router-link to="/plan" tag="li">
-        <i class="iconfont icon-wode"></i>
-        <p>计划2</p>
+        <p>计划</p>
       </router-link>
       <router-link to="/motion" tag="li">
         <i class="iconfont icon-yingyuan"></i>
-        <p>运动测试</p>
+        <p>运动</p>
       </router-link>
       <router-link to="/shopping" tag="li">
         <i class="iconfont icon-yingyuan"></i>
-        <p>商城测试</p>
+        <p>商城</p>
       </router-link>
       <router-link to="/my" tag="li">
         <i class="iconfont icon-yingyuan"></i>
