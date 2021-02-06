@@ -1,6 +1,8 @@
 <!--  -->
 <template>
   <div class="">
+    <!-- 计划 -->
+    <van-button round type="primary" id="plan">免费获取计划</van-button>
     <Footer></Footer>
   </div>
 </template>
@@ -37,5 +39,14 @@ export default {
   activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 };
 </script>
-<style lang='scss' scoped>
+<style  scoped>
+#plan {
+  width: 300px;
+  height: 70px;
+  font-size: 20px;
+  color: rgb(247, 246, 246);
+  position: relative;
+  left: 30px;
+  bottom: -530px;
+}
 </style>
