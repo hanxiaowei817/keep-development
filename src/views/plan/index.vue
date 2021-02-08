@@ -1,8 +1,44 @@
 <!--  -->
 <template>
-  <div class="">
-    <!-- 计划 -->
+  <div id="external">
     <van-button round type="primary" id="plan">免费获取计划</van-button>
+
+    <div class="head">
+      <h3>训练计划</h3>
+      <h3>高效达成减脂目标</h3>
+      <ul>
+        <li>多种训练计划</li>
+        <li>饮食记录与分析</li>
+      </ul>
+    </div>
+
+    <p>不知道该 <span>练什么</span> ? <span>练什么</span> ?</p>
+    <p>锻炼很久却依然 <span>没有效果</span> ?</p>
+    <p>总是 <span>无法坚持</span> 运动?</p>
+    <div id="problem">
+      <h3>训练计划+饮食指导</h3>
+      <h3>帮你解决以上问题</h3>
+    </div>
+    <div id="evaluate">
+      <p><span>2,000,000+</span>用户已使用</p>
+      <p>真实体验，真实评价</p>
+    </div>
+    <!-- 轮播图 -->
+    <van-swipe id="Carousel" :autoplay="3000">
+      <van-swipe-item v-for="(image, index) in images" :key="index">
+        <img v-lazy="image" />
+      </van-swipe-item>
+    </van-swipe>
+
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
     <Footer></Footer>
   </div>
 </template>
@@ -18,7 +54,12 @@ export default {
   },
   data() {
     //这里存放数据
-    return {};
+    return {
+      images: [
+        "https://img01.yzcdn.cn/vant/apple-1.jpg",
+        "https://img01.yzcdn.cn/vant/apple-2.jpg",
+      ],
+    };
   },
   //监听属性 类似于data概念
   computed: {},
@@ -40,13 +81,58 @@ export default {
 };
 </script>
 <style  scoped>
+/* 轮播图 */
+#Carousel img {
+  width: 100%;
+  height: 100%;
+}
+/* 按钮 */
 #plan {
   width: 300px;
   height: 70px;
   font-size: 20px;
   color: rgb(247, 246, 246);
-  position: relative;
+  position: fixed;
   left: 30px;
-  bottom: -530px;
+  top: 530px;
+  z-index: 999;
+}
+/* 头部 */
+.head {
+  width: 100%;
+  height: 250px;
+  background: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcrawl.nosdn.127.net%2Fb0db45d24efc50b53d35beb2d4cc465e.jpg&refer=http%3A%2F%2Fcrawl.nosdn.127.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1615271255&t=65db3071ebde8da94e51d5c1f3f2d688)
+    no-repeat;
+  background-size: 100%;
+  color: rgb(249, 250, 248);
+  overflow: hidden;
+}
+.head li {
+  text-indent: 40px;
+  margin-top: 10px;
+}
+h3 {
+  font-weight: 100;
+  font-size: 26px;
+  text-indent: 20px;
+  margin-top: 10px;
+}
+p {
+  text-align: center;
+}
+p span {
+  font-size: 24px;
+  color: rgb(4, 159, 248);
+}
+#problem {
+  text-align: center;
+  margin-top: 30px;
+}
+#problem h3 {
+  font-weight: 600;
+  color: rgb(59, 58, 58);
+}
+#evaluate {
+  margin-top: 20px;
 }
 </style>
