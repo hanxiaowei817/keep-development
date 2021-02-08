@@ -29,10 +29,12 @@
 
         <div v-else>
           <div class="my-header">
-            <i class="iconfont icon-wode"></i>
-            <i class="iconfont icon-dianying"></i>
-            <i class="iconfont icon-yingyuan"></i>
+            <van-icon name="coupon-o" size="30" @click="myList" />
+            <van-icon name="smile-o" size="30" class="smile-o" />
+            <van-icon name="envelop-o" badge="43" size="30" />
           </div>
+          <br />
+          <br />
           <div>
             <p class="my-huanying">尊敬的客户：</p>
             <p class="my-continue">相信自己，坚持锻炼，坚持瘦身</p>
@@ -44,21 +46,24 @@
           </div>
           <div class="my-shujuall">
             <div class="my-shuju">
-              <p>运动数据</p>
+              <p>运动数据<van-icon name="arrow" size="" class="arrow" /></p>
               <p>总运动</p>
               <p>337分钟</p>
               <p>本周消耗0千卡</p>
             </div>
             <div class="my-shuju">
-              <p>健康数据</p>
+              <p>健康数据 <van-icon name="arrow" size="" class="arrow" /></p>
               <p>体重</p>
               <p>55kg</p>
               <p>上次记录181天前</p>
             </div>
           </div>
           <div class="my-kecheng">
-            <span>我的课程</span>
-            <i class="iconfont icon-dianying"></i>
+            <div class="my-kechengheader">
+              <span class="my-kechengtext">我的课程</span>
+              <van-icon name="more-o" size="30" class="more-o" />
+            </div>
+            <br />
             <div class="my-kecheng1">
               <div>
                 <img
@@ -84,6 +89,54 @@
                 <p>我收藏的课程</p>
                 <p>0节课程</p>
               </div>
+            </div>
+            <div class="my-kecheng1">
+              <div>
+                <img
+                  class="my-shoucangkecheng"
+                  src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20190209%2F62aead63100b46adba1ccc445663ee35.gif&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1615201393&t=2970979c32b60d266ca1a570e7bca658"
+                  alt=""
+                />
+              </div>
+              <div class="my-shoucang">
+                <p>我收藏的课程</p>
+                <p>0节课程</p>
+              </div>
+            </div>
+          </div>
+          <div class="my-footerall">
+            <div class="my-footer1">
+              <p class="footericon">
+                <van-icon
+                  name="comment-o"
+                  size="40"
+                  color="white"
+                  class="comment-o"
+                />
+              </p>
+              <p>我的计划</p>
+            </div>
+            <div class="my-footer1">
+              <p class="footericon">
+                <van-icon
+                  name="bag-o"
+                  size="40"
+                  color="white"
+                  class="comment-o"
+                />
+              </p>
+              <p>已购课程</p>
+            </div>
+            <div class="my-footer1">
+              <p class="footericon">
+                <van-icon
+                  name="down"
+                  size="40"
+                  color="white"
+                  class="comment-o"
+                />
+              </p>
+              <p>下载的课</p>
             </div>
           </div>
 
@@ -97,6 +150,52 @@
           <Footer></Footer>
         </div>
         <router-view></router-view>
+      </div>
+    </div>
+    <div v-show="show" class="my-left">
+      <div>
+        <div>
+          <p>活动中心</p>
+        </div>
+        <div>
+          <van-sidebar v-model="activeKey">
+            <van-icon name="like-o" />
+            <van-sidebar-item title="我的kg" />
+            <van-sidebar-item title="我的收藏" />
+            <van-sidebar-item title="草稿箱" />
+          </van-sidebar>
+        </div>
+        <div>
+          <van-sidebar v-model="activeKey">
+            <van-sidebar-item title="我的钱包" />
+            <van-sidebar-item title="我的订单" />
+            <van-sidebar-item title="购物车" />
+            <van-sidebar-item title="卡路里币" />
+          </van-sidebar>
+        </div>
+        <div>
+          <van-sidebar v-model="activeKey">
+            <van-sidebar-item title="饮食工具" />
+            <van-sidebar-item title="分类菜谱" />
+          </van-sidebar>
+        </div>
+        <div>
+          <van-sidebar v-model="activeKey">
+            <van-sidebar-item title="身体测试" />
+            <van-sidebar-item title="难度测试" />
+          </van-sidebar>
+        </div>
+        <div>
+          <van-sidebar v-model="activeKey">
+            <van-sidebar-item title="我的目标" />
+            <van-sidebar-item title="卡路里银行" />
+          </van-sidebar>
+        </div>
+
+        <div>
+          <span>帮助中心</span>
+          <span>设置</span>
+        </div>
       </div>
     </div>
   </div>
@@ -116,6 +215,8 @@ export default {
     //这里存放数据
     return {
       isLogin: getToken() || "",
+      activeKey: 0,
+      show: false,
     };
   },
   //监听属性 类似于data概念
@@ -132,6 +233,12 @@ export default {
       removeToken();
       this.isLogin = false;
     },
+    myList() {
+      this.show = true;
+    },
+    // myContent() {
+    //   this.show = false;
+    // },
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -147,6 +254,9 @@ export default {
 };
 </script>
 <style scoped>
+.arrow {
+  margin-left: 50px;
+}
 #content .login_body {
   width: 100%;
 }
@@ -186,27 +296,33 @@ export default {
 
 /* 以下是自己写的 */
 .my-header {
-  height: 30px;
-  /* position: fixed;
-  top: 30px;
-  left: 0; */
+  height: 50px;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  margin: 5px;
+  margin-top: 10px;
 }
-.icon-wode,
-.icon-yingyuan,
-.icon-dianying {
-  font-size: 30px;
+.smile-o {
+  margin-left: 260px;
+  margin-right: 6px;
 }
-.icon-dianying {
-  margin-left: 276px;
-}
+
 .my-huanying {
-  height: 70px;
-  font-size: 40px;
+  height: 50px;
+  font-size: 30px;
+  margin-left: 5px;
+  padding-top: 10px;
+  line-height: 50px;
+  font-weight: 900;
 }
 .my-continue {
   height: 30px;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 30px;
+  margin-left: 5px;
+  padding-top: 10px;
+  padding-bottom: 5px;
 }
 .keep-huiyuan {
   height: 60px;
@@ -236,18 +352,24 @@ export default {
 }
 .my-shujuall {
   height: 100px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 .my-shuju {
-  width: 177px;
-  margin-right: 10px;
-  background: gray;
+  width: 160px;
+  margin: 10px 5px;
+  background: snow;
   height: 100px;
-  float: left;
+}
+.my-shuju p {
+  margin-left: 5px;
+  margin-bottom: 3px;
 }
 .my-kecheng {
-  height: 160px;
-  background: grey;
-  margin-top: 4px;
+  height: 270px;
+  background: snow;
+  margin: 4px 0px;
 }
 .my-shoucangkecheng {
   width: 50px;
@@ -257,8 +379,58 @@ export default {
 .my-shoucang {
   float: left;
 }
+.my-shoucang p {
+  margin-left: 10px;
+}
+.my-shoucang p:nth-child(1) {
+  margin-bottom: 5px;
+}
+.my-kechengheader {
+  height: 60px;
+  margin-left: 5px;
+}
+.my-kechengtext {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 60px;
+}
+.more-o {
+  margin-left: 230px;
+  line-height: 60px;
+}
 .my-kecheng1 {
   height: 50px;
-  margin-bottom: 10px;
+  margin: 10px 5px;
+}
+
+.my-footerall {
+  height: 90px;
+  margin: 5px;
+  background: snow;
+  display: flex;
+  justify-content: space-between;
+}
+.footericon {
+  width: 60px;
+  height: 60px;
+  background: springgreen;
+  text-align: center;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.my-footer1 {
+  width: 80px;
+  height: 90px;
+  text-align: center;
+}
+.comment-o {
+  margin-top: 10px;
+}
+.my-left {
+  width: 280px;
+  background: coral;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>

@@ -12,8 +12,12 @@ import {
   Swipe,
   SwipeItem,
   CountDown,
+  Sidebar, SidebarItem
 } from 'vant';
 
+
+Vue.use(Sidebar);
+Vue.use(SidebarItem);
 Vue.use(Search);
 Vue.use(Sticky);
 Vue.use(Grid);
