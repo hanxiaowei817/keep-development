@@ -136,11 +136,14 @@
     />
     <!-- 歌单区域 -->
     <ul class="movde">
-      <li v-for="itme in songs" :key="itme.id">
+      <li v-for="itme in songs" :key="itme.id" @click="toChild(itme.name)">
         <img :src="itme.coverImgUrl" alt="" />
         <p>{{ itme.name }}</p>
       </li>
     </ul>
+
+    <span class="goods"><i class="el-icon-s-goods"></i></span>
+
     <Footer></Footer>
   </div>
 </template>
@@ -181,6 +184,10 @@ export default {
       );
       console.log(result);
       this.songs = result.data.playlist;
+    },
+    //跳转传参
+    toChild(id) {
+      this.$router.push({ path: `/child/${id}` });
     },
   },
   //生命周期 - 创建完成（可以访问当前this实例）
@@ -312,5 +319,20 @@ export default {
 }
 .movde p {
   font-size: 0.8rem;
+}
+.goods {
+  position: fixed;
+  right: 1.3rem;
+  top: 44rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: yellowgreen;
+  border-radius: 50%;
+}
+.el-icon-s-goods {
+  font-size: 1.5rem;
+  color: white;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
 }
 </style>
