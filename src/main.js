@@ -3,6 +3,7 @@ import App from './App.vue'
 //引入路由
 import router from './router'
 
+// import axios from 'axios'
 
 import {
   Search,
@@ -26,22 +27,31 @@ import 'vant/lib/sticky/style';
 
 //引入button
 import 'vant/lib/button/style';
-import { Button } from 'vant';
+import {
+  Button
+} from 'vant';
 Vue.use(Button);
 //引入icon
 import 'vant/lib/icon/style';
-import { Icon } from 'vant';
+import {
+  Icon
+} from 'vant';
 Vue.use(Icon);
 
 //标签页
 import 'vant/lib/tab/style';
 import 'vant/lib/tabs/style';
-import { Tab, Tabs } from 'vant';
+import {
+  Tab,
+  Tabs
+} from 'vant';
 Vue.use(Tab);
 Vue.use(Tabs);
 //
 import 'vant/lib/nav-bar/style';
-import { NavBar } from 'vant';
+import {
+  NavBar
+} from 'vant';
 Vue.use(NavBar);
 
 // 引入mint-ui

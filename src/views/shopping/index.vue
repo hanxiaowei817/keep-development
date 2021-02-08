@@ -129,117 +129,18 @@
         </dl>
       </div>
     </div>
-    <div class="hotlist-banner">
-      <div class="hotlist">
-        <img
-          src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=963641137,2157786980&fm=26&gp=0.jpg"
-          alt=""
-        />
-        <div class="equipment">
-          <dl>
-            <dt><h3>智能装备榜</h3></dt>
-            <dd><p>记录数据</p></dd>
-          </dl>
-          <dl>
-            <dt>
-              <img
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
-                alt=""
-              />
-            </dt>
-            <dd>￥20 <del>￥199</del></dd>
-          </dl>
-          <dl>
-            <dt>
-              <img
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
-                alt=""
-              />
-            </dt>
-            <dd>￥20 <del>￥199</del></dd>
-          </dl>
-          <dl>
-            <dt>
-              <img
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
-                alt=""
-              />
-            </dt>
-            <dd>￥20 <del>￥199</del></dd>
-          </dl>
-        </div>
-      </div>
-      <div class="hotlist">
-        <div class="equipment">
-          <dl>
-            <dt><h3>智能装备榜</h3></dt>
-            <dd><p>记录数据</p></dd>
-          </dl>
-          <dl>
-            <dt>
-              <img
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
-                alt=""
-              />
-            </dt>
-            <dd>￥20 <del>￥199</del></dd>
-          </dl>
-          <dl>
-            <dt>
-              <img
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
-                alt=""
-              />
-            </dt>
-            <dd>￥20 <del>￥199</del></dd>
-          </dl>
-          <dl>
-            <dt>
-              <img
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
-                alt=""
-              />
-            </dt>
-            <dd>￥20 <del>￥199</del></dd>
-          </dl>
-        </div>
-      </div>
-      <div class="hotlist">
-        <div class="equipment">
-          <dl>
-            <dt><h3>智能装备榜</h3></dt>
-            <dd><p>记录数据</p></dd>
-          </dl>
-          <dl>
-            <dt>
-              <img
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
-                alt=""
-              />
-            </dt>
-            <dd>￥20 <del>￥199</del></dd>
-          </dl>
-          <dl>
-            <dt>
-              <img
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
-                alt=""
-              />
-            </dt>
-            <dd>￥20 <del>￥199</del></dd>
-          </dl>
-          <dl>
-            <dt>
-              <img
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
-                alt=""
-              />
-            </dt>
-            <dd>￥20 <del>￥199</del></dd>
-          </dl>
-        </div>
-      </div>
-    </div>
+    <img
+      class="logo"
+      src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=963641137,2157786980&fm=26&gp=0.jpg"
+      alt=""
+    />
+    <!-- 歌单区域 -->
+    <ul class="movde">
+      <li v-for="itme in songs" :key="itme.id">
+        <img :src="itme.coverImgUrl" alt="" />
+        <p>{{ itme.name }}</p>
+      </li>
+    </ul>
     <Footer></Footer>
   </div>
 </template>
@@ -248,7 +149,7 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 import Footer from "../../components/footer/footer";
-
+import axios from "axios";
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {
@@ -263,6 +164,7 @@ export default {
         "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3488147428,3962514625&fm=26&gp=0.jpg",
         "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=831479040,1172852968&fm=26&gp=0.jpg",
       ],
+      songs: [],
       time: 30 * 60 * 60 * 1000,
     };
   },
@@ -271,9 +173,20 @@ export default {
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {},
+  methods: {
+    //获取歌单
+    async getGD() {
+      const result = await axios.get(
+        "http://localhost:3000/user/playlist?uid=32953014"
+      );
+      console.log(result);
+      this.songs = result.data.playlist;
+    },
+  },
   //生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
+  created() {
+    this.getGD();
+  },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   beforeCreate() {}, //生命周期 - 创建之前
@@ -379,5 +292,25 @@ export default {
 .hotlist .equipment img {
   width: 100%;
   height: 80%;
+}
+.logo {
+  width: 100%;
+  height: 8rem;
+}
+.movde {
+  width: 100%;
+  height: 7rem;
+}
+.movde li {
+  width: 40%;
+  float: left;
+  margin: 1rem;
+}
+.movde img {
+  width: 100%;
+  height: 7rem;
+}
+.movde p {
+  font-size: 0.8rem;
 }
 </style>
