@@ -30,6 +30,73 @@
       </van-swipe-item>
     </van-swipe>
 
+    <div id="diet">
+      <p>饮食记录与分析工具</p>
+
+      <div id="diet-b">
+        <div id="diet-b-1">
+          <p id="diet-1">饮食记录</p>
+          <p id="diet-2">饮食分析</p>
+        </div>
+        <ul id="diet-l">
+          <li>海量食物库</li>
+          <li>拍照识别记录</li>
+          <li>三餐热量统计</li>
+        </ul>
+
+        <ul id="diet-r">
+          <li>餐前饮食建议</li>
+          <li>热量、健康评分</li>
+          <li>专业饮食分析</li>
+        </ul>
+      </div>
+    </div>
+    <van-grid id="layout">
+      <van-grid-item icon="manager-o" text="覆盖超过1万常见食物" />
+      <span class="jia">+</span>
+      <van-grid-item icon="eye-o" text="支持拍照记录饮食内容" />
+    </van-grid>
+
+    <van-grid id="layout">
+      <van-grid-item icon="font-o" text="热量统计与评分" />
+      <span class="jia">+</span>
+      <van-grid-item icon="comment-o" text="每餐饮食建议" />
+    </van-grid>
+
+    <div id="diet">
+      <p>两种训练计划</p>
+
+      <div id="diet-b">
+        <div id="diet-b-1">
+          <p id="diet-1">个性全身计划</p>
+          <p id="diet-2">部位突破计划</p>
+        </div>
+        <ul id="diet-l">
+          <li>个性制定全身计划</li>
+          <li>入门快</li>
+          <li>根据效果动态调整</li>
+        </ul>
+
+        <ul id="diet-r">
+          <li>针对重点</li>
+          <li>见效快</li>
+          <li>专业人士科学编排</li>
+        </ul>
+      </div>
+    </div>
+
+    <van-grid id="layout">
+      <van-grid-item icon="back-top" text="4-8周训练循环渐进" />
+      <span class="jia">+</span>
+      <van-grid-item icon="points" text="每日数据反馈" />
+    </van-grid>
+
+    <van-grid id="layout">
+      <van-grid-item icon="label-o" text="每天2节会员专属课程" />
+      <span class="jia">+</span>
+      <van-grid-item icon="pause-circle-o" text="专属视频讲解健身饮食知识" />
+    </van-grid>
+
     <div>1</div>
     <div>1</div>
     <div>1</div>
@@ -39,6 +106,13 @@
     <div>1</div>
     <div>1</div>
     <div>1</div>
+
+    <div>1</div>
+
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+
     <Footer></Footer>
   </div>
 </template>
@@ -134,5 +208,55 @@ p span {
 }
 #evaluate {
   margin-top: 20px;
+}
+#diet {
+  margin-top: 100px;
+}
+#diet p {
+  font-size: 22px;
+  font-weight: 600;
+}
+#diet-b {
+  width: 300px;
+  height: 200px;
+  background: rgb(250, 222, 248);
+  margin: 30px auto;
+  overflow: hidden;
+}
+#diet-b-1 {
+  margin-top: 20px;
+  color: rgb(247, 149, 214);
+}
+#diet-1 {
+  width: 150px;
+  float: left;
+  text-align: center;
+}
+#diet-l {
+  width: 150px;
+  float: left;
+  text-align: center;
+  margin-top: 40px;
+}
+#diet-l li,
+#diet-r li {
+  line-height: 35px;
+}
+#diet-r {
+  width: 150px;
+  float: right;
+  text-align: center;
+  margin-top: 40px;
+}
+.jia {
+  font-size: 40px;
+  color: rgb(126, 83, 243);
+  margin-top: 20px;
+}
+#layout {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 20px;
 }
 </style>
