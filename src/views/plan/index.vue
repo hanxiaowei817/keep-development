@@ -97,21 +97,15 @@
       <van-grid-item icon="pause-circle-o" text="专属视频讲解健身饮食知识" />
     </van-grid>
 
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
-
-    <div>1</div>
-
-    <div>1</div>
-    <div>1</div>
-    <div>1</div>
+    <div id="fit">
+      <p>适合人群</p>
+      <img src="../../../public/images/1.jpg" alt="" />
+    </div>
+    <div id="content">
+      <p>计划内容</p>
+      <img src="../../../public/images/2.jpg" alt="" />
+      <img src="../../../public/images/3.jpg" alt="" />
+    </div>
 
     <Footer></Footer>
   </div>
@@ -212,7 +206,9 @@ p span {
 #diet {
   margin-top: 100px;
 }
-#diet p {
+#diet p,
+#fit p,
+#content p {
   font-size: 22px;
   font-weight: 600;
 }
@@ -258,5 +254,11 @@ p span {
   justify-content: space-around;
   text-align: center;
   font-size: 20px;
+}
+#fit img,
+#content img {
+  width: 100%;
+  height: 100%;
+  margin: 30px 0;
 }
 </style>
