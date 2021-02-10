@@ -140,12 +140,7 @@
             </div>
           </div>
 
-          <mt-cell
-            title="退出登录"
-            is-link
-            value="退出"
-            @click.native="loginout"
-          >
+          <mt-cell title="退出登录" is-link value="退出" @click="loginout">
           </mt-cell>
           <Footer></Footer>
         </div>
@@ -155,49 +150,47 @@
     <div v-show="show" class="my-left">
       <div>
         <div>
-          <p>活动中心</p>
+          <p class="leftHeader">尊敬的客户</p>
         </div>
         <div>
-          <van-sidebar v-model="activeKey">
-            <van-icon name="like-o" />
-            <van-sidebar-item title="我的kg" />
-            <van-sidebar-item title="我的收藏" />
-            <van-sidebar-item title="草稿箱" />
-          </van-sidebar>
-        </div>
-        <div>
-          <van-sidebar v-model="activeKey">
-            <van-sidebar-item title="我的钱包" />
-            <van-sidebar-item title="我的订单" />
-            <van-sidebar-item title="购物车" />
-            <van-sidebar-item title="卡路里币" />
-          </van-sidebar>
-        </div>
-        <div>
-          <van-sidebar v-model="activeKey">
-            <van-sidebar-item title="饮食工具" />
-            <van-sidebar-item title="分类菜谱" />
-          </van-sidebar>
-        </div>
-        <div>
-          <van-sidebar v-model="activeKey">
-            <van-sidebar-item title="身体测试" />
-            <van-sidebar-item title="难度测试" />
-          </van-sidebar>
-        </div>
-        <div>
-          <van-sidebar v-model="activeKey">
-            <van-sidebar-item title="我的目标" />
-            <van-sidebar-item title="卡路里银行" />
-          </van-sidebar>
+          <p class="leftActive">活动中心<van-icon name="arrow" /></p>
+          <ul class="leftList">
+            <li><van-icon name="location-o" />我的kg</li>
+            <li><van-icon name="like-o" />我的收藏</li>
+            <li><van-icon name="star-o" />草稿箱</li>
+          </ul>
+          <ul class="leftList">
+            <li><van-icon name="location-o" />我的钱包</li>
+            <li><van-icon name="like-o" />我的订单</li>
+            <li><van-icon name="star-o" />购物车</li>
+            <li><van-icon name="star-o" />卡路里币</li>
+          </ul>
+          <ul class="leftList">
+            <li><van-icon name="location-o" />智能硬件</li>
+            <li><van-icon name="like-o" />keepland</li>
+          </ul>
+          <ul class="leftList">
+            <li><van-icon name="location-o" />饮食工具</li>
+            <li><van-icon name="like-o" />分类菜谱</li>
+          </ul>
+          <ul class="leftList">
+            <li><van-icon name="location-o" />身体测试</li>
+            <li><van-icon name="like-o" />难度测试</li>
+          </ul>
+          <ul class="leftList">
+            <li><van-icon name="location-o" />我的目标</li>
+            <li><van-icon name="like-o" />卡路里银行</li>
+          </ul>
         </div>
 
-        <div>
-          <span>帮助中心</span>
-          <span>设置</span>
+        <div class="leftFooter">
+          <span><van-icon name="phone-circle-o" />帮助中心</span>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <span><van-icon name="discount" />设置</span>
         </div>
       </div>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -236,9 +229,9 @@ export default {
     myList() {
       this.show = true;
     },
-    // myContent() {
-    //   this.show = false;
-    // },
+    myLeft() {
+      this.show = false;
+    },
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
@@ -428,9 +421,48 @@ export default {
 }
 .my-left {
   width: 280px;
-  background: coral;
   position: absolute;
   top: 0;
   left: 0;
+}
+.leftList {
+  width: 280px;
+  border-bottom: solid 1px;
+  background: gainsboro;
+}
+.leftList li {
+  height: 60px;
+  line-height: 60px;
+  margin-left: 30px;
+}
+.leftHeader {
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 50px;
+  background: ghostwhite;
+  width: 280px;
+}
+.leftActive {
+  margin-top: 50px;
+  width: 280px;
+  font-size: 20px;
+  background: fuchsia;
+  text-indent: 30px;
+  height: 40px;
+  border-radius: 20px;
+  line-height: 40px;
+}
+.leftFooter {
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  line-height: 50px;
+  background: ghostwhite;
+  width: 280px;
 }
 </style>

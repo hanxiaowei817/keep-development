@@ -19,6 +19,12 @@ import {
   CountDown,
   Sidebar, SidebarItem
 } from 'vant';
+// 引入mint-ui
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+
+
+Vue.use(MintUI)
 
 
 Vue.use(Sidebar);
@@ -62,12 +68,7 @@ import {
 } from 'vant';
 Vue.use(NavBar);
 
-// 引入mint-ui
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
 
-
-Vue.use(MintUI)
 
 
 Vue.config.productionTip = false
