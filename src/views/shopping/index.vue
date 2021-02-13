@@ -134,11 +134,17 @@
       src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=963641137,2157786980&fm=26&gp=0.jpg"
       alt=""
     />
-    <!-- 歌单区域 -->
-    <ul class="movde">
-      <li v-for="itme in songs" :key="itme.id" @click="toChild(itme.name)">
-        <img :src="itme.coverImgUrl" alt="" />
-        <p>{{ itme.name }}</p>
+    <!-- 列表区域 -->
+    <ul class="infinite-list movde" v-infinite-scroll="load">
+      <li
+        class="infinite-list-item"
+        v-for="itme in songs"
+        :key="itme.id"
+        @click="toChild(itme.pid)"
+      >
+        <img :src="itme.pimg" alt="" />
+        <p><span>满减</span>{{ itme.pname }}</p>
+        <p class="price">￥{{ itme.pprice }}<del>￥99</del></p>
       </li>
     </ul>
 
@@ -179,15 +185,24 @@ export default {
   methods: {
     //获取歌单
     async getGD() {
+      const pagenum = 0;
       const result = await axios.get(
-        "http://localhost:3000/user/playlist?uid=32953014"
+        `http://jx.xuzhixiang.top/ap/api/allproductlist.php?pagesize=10&pagenum=${pagenum}`
       );
       console.log(result);
-      this.songs = result.data.playlist;
+      this.songs = result.data.data;
+      console.log(this.songs);
     },
     //跳转传参
     toChild(id) {
       this.$router.push({ path: `/child/${id}` });
+      localStorage.setItem("pid", id);
+      console.log(id);
+      console.log(localStorage.setItem("pid", id));
+      console.log(localStorage.getItem("pid"));
+    },
+    load() {
+      this.pagenum += 1;
     },
   },
   //生命周期 - 创建完成（可以访问当前this实例）
@@ -312,6 +327,7 @@ export default {
   width: 40%;
   float: left;
   margin: 1rem;
+  background: yellowgreen;
 }
 .movde img {
   width: 100%;
@@ -334,5 +350,24 @@ export default {
   color: white;
   margin-left: 0.5rem;
   margin-top: 0.5rem;
+}
+
+.movde li p span {
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: #fff;
+  background: red;
+  font-size: 0.5rem;
+}
+.price {
+  font-size: 0.5rem;
+  color: red;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.price del {
+  color: gray;
+  font-size: 1.5px;
 }
 </style>

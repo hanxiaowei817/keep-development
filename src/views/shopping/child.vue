@@ -1,12 +1,24 @@
 <!--  -->
 <template>
-  <div class="child">{{ id }}</div>
+  <div class="child">
+    {{ id }}
+
+    <!-- 列表区域 -->
+    <!-- 列表区域 -->
+    <ul>
+      <li v-for="itme in songs" :key="itme">
+        <img :src="itme.pimg" alt="" />
+        <p><span>满减</span>{{ itme.pname }}</p>
+        <p class="price">￥{{ itme.pprice }}<del>￥99</del></p>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-
+import axios from "axios";
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {},
@@ -14,18 +26,36 @@ export default {
     //这里存放数据
     return {
       id: "",
+      songs: [],
     };
   },
+
   //监听属性 类似于data概念
   computed: {},
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {},
+  methods: {
+    //商品详情
+    async getGD() {
+      //获取商品id
+      const pid = localStorage.getItem("pid");
+      console.log(pid);
+      const result = await axios.get(
+        `http://jx.xuzhixiang.top/ap/api/detail.php?id=${pid}`
+      );
+      console.log(result);
+      this.songs = result.data.data;
+      console.log(this.songs);
+    },
+  },
   //生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
+  created() {
+    this.getGD();
+  },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
+    //获取id
     this.id = this.$route.params.id;
     console.log(this.id);
   },
