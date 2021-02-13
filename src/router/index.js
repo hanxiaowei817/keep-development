@@ -31,6 +31,10 @@ const router = new VueRouter({
             component: () => import('../views/shopping/index.vue'),
         },
         {
+            path: '/Cart', //路由级组件
+            component: () => import('../views/shopping/Cart.vue'),
+        },
+        {
             path: '/child/:id',
             component: () => import('../views/shopping/child.vue'),
         },

@@ -17,13 +17,18 @@ import {
   Swipe,
   SwipeItem,
   CountDown,
-  Sidebar, SidebarItem
+  Sidebar,
+  SidebarItem,
+  GoodsAction,
+  GoodsActionIcon,
+  GoodsActionButton,
+  Sku,
+  Dialog,
+  Toast,
 } from 'vant';
 // 引入mint-ui
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
-
-
 Vue.use(MintUI)
 
 
@@ -36,6 +41,12 @@ Vue.use(GridItem);
 Vue.use(Swipe);
 Vue.use(SwipeItem);
 Vue.use(CountDown);
+Vue.use(GoodsAction);
+Vue.use(GoodsActionButton);
+Vue.use(GoodsActionIcon);
+Vue.use(Sku);
+Vue.use(Dialog);
+Vue.use(Toast);
 import 'vant/lib/search/style';
 import 'vant/lib/sticky/style';
 
