@@ -123,7 +123,7 @@ export default {
   mounted() {
     //获取id
     this.pid = this.$route.params.id;
-    console.log(this.pid);
+    // console.log(this.pid);
   },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前

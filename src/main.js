@@ -25,6 +25,7 @@ import {
   Sku,
   Dialog,
   Toast,
+  SwipeCell
 } from 'vant';
 // 引入mint-ui
 import MintUI from 'mint-ui'
@@ -47,6 +48,7 @@ Vue.use(GoodsActionIcon);
 Vue.use(Sku);
 Vue.use(Dialog);
 Vue.use(Toast);
+Vue.use(SwipeCell);
 import 'vant/lib/search/style';
 import 'vant/lib/sticky/style';
 

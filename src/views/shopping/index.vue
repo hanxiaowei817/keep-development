@@ -147,9 +147,9 @@
         <p class="price">￥{{ itme.pprice }}<del>￥99</del></p>
       </li>
     </ul>
-
-    <span class="goods"><i class="el-icon-s-goods"></i></span>
-
+    <router-link to="/Cart">
+      <span class="goods"><i class="el-icon-s-goods"></i></span>
+    </router-link>
     <Footer></Footer>
   </div>
 </template>
@@ -158,6 +158,7 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 import Footer from "../../components/footer/footer";
+// import { getToken } from "../../utils/auth";
 import axios from "axios";
 export default {
   //import引入的组件需要注入到对象中才能使用
@@ -183,7 +184,7 @@ export default {
   watch: {},
   //方法集合
   methods: {
-    //获取歌单
+    //获取商品列表
     async getGD() {
       const pagenum = 0;
       const result = await axios.get(
@@ -192,6 +193,8 @@ export default {
       console.log(result);
       this.songs = result.data.data;
       console.log(this.songs);
+      // getToken("获取到token");
+      // console.log(getToken());
     },
     //跳转传参
     toChild(id) {
