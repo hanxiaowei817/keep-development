@@ -3,6 +3,7 @@
   <div id="my">
     <div id="content">
       <div class="login_body">
+        <!-- 登陆页面 -->
         <div v-if="!isLogin">
           <div>
             <input
@@ -27,6 +28,7 @@
           </div>
         </div>
 
+        <!-- 主页面 -->
         <div v-else>
           <div class="my-header">
             <van-icon name="coupon-o" size="30" @click="myList" />
@@ -105,48 +107,59 @@
             </div>
           </div>
           <div class="my-footerall">
-            <div class="my-footer1">
-              <p class="footericon">
-                <van-icon
-                  name="comment-o"
-                  size="40"
-                  color="white"
-                  class="comment-o"
-                />
-              </p>
-              <p>我的计划</p>
+            <div class="my-footerheader">
+              <div class="my-footer1">
+                <p class="footericon">
+                  <van-icon
+                    name="comment-o"
+                    size="40"
+                    color="white"
+                    class="comment-o"
+                  />
+                </p>
+                <p>我的计划</p>
+              </div>
+              <div class="my-footer1">
+                <p class="footericon">
+                  <van-icon
+                    name="bag-o"
+                    size="40"
+                    color="white"
+                    class="comment-o"
+                  />
+                </p>
+                <p>已购课程</p>
+              </div>
+              <div class="my-footer1">
+                <p class="footericon">
+                  <van-icon
+                    name="down"
+                    size="40"
+                    color="white"
+                    class="comment-o"
+                  />
+                </p>
+                <p>下载的课</p>
+              </div>
             </div>
-            <div class="my-footer1">
-              <p class="footericon">
-                <van-icon
-                  name="bag-o"
-                  size="40"
-                  color="white"
-                  class="comment-o"
-                />
-              </p>
-              <p>已购课程</p>
-            </div>
-            <div class="my-footer1">
-              <p class="footericon">
-                <van-icon
-                  name="down"
-                  size="40"
-                  color="white"
-                  class="comment-o"
-                />
-              </p>
-              <p>下载的课</p>
-            </div>
+
+            <mt-cell
+              title="退出登录"
+              is-link
+              value="退出"
+              @click="loginout"
+              class="loginout"
+            >
+            </mt-cell>
           </div>
 
-          <mt-cell title="退出登录" is-link value="退出" @click="loginout">
-          </mt-cell>
           <Footer></Footer>
         </div>
         <router-view></router-view>
       </div>
     </div>
+
+    <!-- 侧边栏 -->
     <div v-show="show" class="my-left">
       <div>
         <div>
@@ -185,8 +198,9 @@
 
         <div class="leftFooter">
           <span><van-icon name="phone-circle-o" />帮助中心</span>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <span><van-icon name="discount" />设置</span>
+          <span style="margin-left: 40px"
+            ><van-icon name="discount" />设置</span
+          >
         </div>
       </div>
     </div>
@@ -228,9 +242,6 @@ export default {
     },
     myList() {
       this.show = true;
-    },
-    myLeft() {
-      this.show = false;
     },
   },
   //生命周期 - 创建完成（可以访问当前this实例）
@@ -397,9 +408,11 @@ export default {
 }
 
 .my-footerall {
-  height: 90px;
+  height: 140px;
   margin: 5px;
   background: snow;
+}
+.my-footerheader {
   display: flex;
   justify-content: space-between;
 }
@@ -415,9 +428,15 @@ export default {
   width: 80px;
   height: 90px;
   text-align: center;
+  float: left;
 }
 .comment-o {
   margin-top: 10px;
+}
+.loginout {
+  width: 375px;
+  height: 40px;
+  background: #e54847;
 }
 .my-left {
   width: 280px;

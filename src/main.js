@@ -31,6 +31,9 @@ import {
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
+import { Cell } from 'mint-ui';
+
+Vue.component(Cell.name, Cell);
 
 
 Vue.use(Sidebar);
