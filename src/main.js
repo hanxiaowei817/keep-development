@@ -25,13 +25,18 @@ import {
   Sku,
   Dialog,
   Toast,
-  SwipeCell
+  SwipeCell,
+  SubmitBar
 } from 'vant';
 // 引入mint-ui
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
-import { Cell } from 'mint-ui';
+import {
+  Cell,
+  InfiniteScroll
+} from 'mint-ui';
+Vue.use(InfiniteScroll);
 
 Vue.component(Cell.name, Cell);
 
@@ -49,6 +54,7 @@ Vue.use(GoodsAction);
 Vue.use(GoodsActionButton);
 Vue.use(GoodsActionIcon);
 Vue.use(Sku);
+Vue.use(SubmitBar);
 Vue.use(Dialog);
 Vue.use(Toast);
 Vue.use(SwipeCell);

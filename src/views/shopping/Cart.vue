@@ -8,12 +8,29 @@
     <!-- 购物车列表 -->
     <ul>
       <li v-for="itme in songs" :key="itme.id">
+        <input type="checkbox" name="" id="" />
         <img :src="itme.pimg" alt="" />
         <p class="name">{{ itme.pname }}</p>
+        <p class="num">
+          <button class="jian">-</button>
+          <span class="pnum">{{ itme.pnum }}</span>
+          <button class="jia">+</button>
+        </p>
         <p class="price">￥{{ itme.pprice }}<del>￥99</del></p>
-        <el-input-number class="shu" v-model="itme.pnum"></el-input-number>
       </li>
     </ul>
+    <!-- 结算 -->
+    <div class="">
+      <p>
+        总价:<span v-for="(itme, index) in songs" :key="index"
+          ><br />
+          {{ index }}--- {{ itme.pprice }}---{{ itme.pnum }} ---
+          {{ (itme.price = Number(itme.pprice) * Number(itme.pnum)) }}
+        </span>
+      </p>
+
+      <button>提交订单</button>
+    </div>
   </div>
 </template>
 
@@ -30,6 +47,8 @@ export default {
     return {
       songs: [],
       // num: 1,
+      price: 0,
+      sum: 0,
     };
   },
   //监听属性 类似于data概念
@@ -43,17 +62,20 @@ export default {
       const pid = localStorage.getItem("pid");
       console.log(pid);
       const result = await axios.get(
-        ` http://jx.xuzhixiang.top/ap/api/cart-list.php?id=1`
+        `http://jx.xuzhixiang.top/ap/api/cart-list.php?id=1`
       );
-      console.log(result);
+      // console.log(result);
       this.songs = result.data.data;
       console.log(this.songs);
+      let num = 0;
+      for (let i = 0; i <= this.songs.length; i++) {
+        const sun =
+          parseFloat(this.songs[i].pprice) * parseInt(this.songs[i].pnum);
+        console.log(sun);
+        num += sun;
+        console.log(num);
+      }
     },
-
-    //计数
-    // handleChange(value) {
-    //   console.log(value);
-    // },
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
@@ -77,35 +99,47 @@ export default {
   width: 100%;
   height: 2.9rem;
   border-bottom: 1px solid rgb(216, 213, 213);
+  z-index: 3;
 }
 ul li {
-  width: 100%;
+  width: 95%;
   height: 10rem;
-  background: rgb(247, 244, 64);
+  margin: auto;
+  /* background: rgb(247, 244, 64); */
+  border: 1px solid gold;
   margin: 0.5rem 0;
+  padding-left: 1rem;
   overflow: hidden;
   position: relative;
+}
+ul li input {
+  position: absolute;
+  left: 0.25rem;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
 }
 ul li:nth-child(1) {
   margin-top: 3rem;
 }
 ul li img {
-  width: 9rem;
-  margin-top: 1rem;
+  width: 8.5rem;
+  margin: 1.2rem 0.5rem 0;
   float: left;
   padding: 0.5rem;
+  border: 1px solid rgb(214, 214, 214);
 }
 .name {
   float: left;
   margin-top: 1rem;
-  width: 12.4rem;
+  width: 9.4rem;
 }
 .price {
   float: left;
-  width: 13.4rem;
+  width: 9.4rem;
   position: absolute;
   bottom: 1rem;
-  left: 10rem;
+  left: 12rem;
   font-size: 1rem;
   color: rgb(149, 248, 1);
 }
@@ -114,10 +148,52 @@ ul li img {
   margin-left: 0.4rem;
   color: gray;
 }
-
-.shu {
+.num {
+  float: left;
   position: absolute;
-  top: 40%;
-  right: 10%;
+  top: 50%;
+  right: 20%;
+}
+.num .jian,
+.num .jia {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+  font-weight: 600;
+  background: grey;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.num span {
+  display: inline-block;
+  margin: 0 0.6rem;
+}
+.settlement {
+  width: 100%;
+  height: 3rem;
+  background: gold;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.settlement button {
+  width: 30%;
+  height: 100%;
+  font-size: 1rem;
+  color: #fff;
+  border-radius: 15px;
+  border: none;
+  float: right;
+  margin-right: 1rem;
+  background: #eb4d1d;
+}
+.settlement p {
+  float: left;
+  line-height: 3rem;
+  margin-left: 6rem;
+}
+.settlement p span {
+  font-size: 1.5rem;
+  color: red;
 }
 </style>

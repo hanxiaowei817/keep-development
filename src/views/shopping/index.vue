@@ -135,7 +135,12 @@
       alt=""
     />
     <!-- 列表区域 -->
-    <ul class="infinite-list movde" v-infinite-scroll="load">
+    <ul
+      class="infinite-list movde"
+      v-infinite-scroll="loadMore"
+      infinite-scroll-disabled="loading"
+      infinite-scroll-distance="0"
+    >
       <li
         class="infinite-list-item"
         v-for="itme in songs"
@@ -147,9 +152,14 @@
         <p class="price">￥{{ itme.pprice }}<del>￥99</del></p>
       </li>
     </ul>
+
+    <div v-if="showloading" class="loding">加载中...</div>
+    <div v-if="showmore" class="showmore">没有更多数据了...</div>
+
     <router-link to="/Cart">
       <span class="goods"><i class="el-icon-s-goods"></i></span>
     </router-link>
+
     <Footer></Footer>
   </div>
 </template>
@@ -174,8 +184,13 @@ export default {
         "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3488147428,3962514625&fm=26&gp=0.jpg",
         "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=831479040,1172852968&fm=26&gp=0.jpg",
       ],
-      songs: [],
+      songs: [], //电影列表
       time: 30 * 60 * 60 * 1000,
+      showloading: false, //默认不显示，请求接口数据的时候显示，请求成功后隐藏
+      loading: false,
+      pagenume: 1, //默认页数
+      pagesize: 10, //默认条数
+      showmore: false, //控制没有更多字样产生
     };
   },
   //监听属性 类似于data概念
@@ -184,18 +199,28 @@ export default {
   watch: {},
   //方法集合
   methods: {
-    //获取商品列表
-    async getGD() {
-      const pagenum = 0;
+    //默认方法，会执行一次
+    async loadMore() {
+      // this.loading = true;
+      this.showloading = true;
+      const start = this.pagenume;
+      const end = this.pagesize;
       const result = await axios.get(
-        `http://jx.xuzhixiang.top/ap/api/allproductlist.php?pagesize=10&pagenum=${pagenum}`
+        `http://jx.xuzhixiang.top/ap/api/allproductlist.php?pagesize=${end}&pagenum=${start}`
       );
-      console.log(result);
-      this.songs = result.data.data;
-      console.log(this.songs);
-      // getToken("获取到token");
-      // console.log(getToken());
+      this.showloading = false;
+      const list = result.data.data;
+      this.songs = this.songs.concat(list);
+      // console.log(this.songs);
+      if (list.length < this.pagesize) {
+        //如果list小于pagesize说明数据已经加载完了
+        this.showmore = true; //没有更多数据，显示没有更多数据
+      } else {
+        this.pagenume = this.pagenume + 1;
+        this.loading = false; //开关打开或关闭
+      }
     },
+
     //跳转传参
     toChild(id) {
       this.$router.push({ path: `/child/${id}` });
@@ -204,13 +229,11 @@ export default {
       console.log(localStorage.setItem("pid", id));
       console.log(localStorage.getItem("pid"));
     },
-    load() {
-      this.pagenum += 1;
-    },
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    this.getGD();
+    // this.getGD();
+    this.loadMore();
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
@@ -224,6 +247,19 @@ export default {
 };
 </script>
 <style  scoped>
+.loading {
+  height: 52px;
+  text-align: center;
+  line-height: 50px;
+  background: url("./ajax-loader.gif") no-repeat 10px conter;
+  background-size: 22px 22px;
+}
+.showmore {
+  height: 52px;
+  line-height: 52px;
+  text-align: center;
+  color: red;
+}
 /* 轮播u图 */
 .my-swipe .van-swipe-item {
   color: #fff;
@@ -324,13 +360,14 @@ export default {
 }
 .movde {
   width: 100%;
-  height: 7rem;
+  height: 11rem;
 }
 .movde li {
   width: 40%;
+  height: 100%;
   float: left;
   margin: 1rem;
-  background: yellowgreen;
+  background: rgb(238, 238, 237);
 }
 .movde img {
   width: 100%;
@@ -338,6 +375,10 @@ export default {
 }
 .movde p {
   font-size: 0.8rem;
+  margin: 0.3rem 0 0.3rem 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .goods {
   position: fixed;
