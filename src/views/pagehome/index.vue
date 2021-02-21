@@ -2,7 +2,7 @@
 <template>
   <div class="">
     <Footer></Footer>
-    <van-sticky>
+    <!-- <van-sticky>
       <div>
         <h3 style="height: 40px; line-height: 40px; background: red">
           首页123
@@ -10,8 +10,8 @@
           <van-icon name="friends" />
         </h3>
       </div>
-    </van-sticky>
-    <van-tabs v-model="active">
+    </van-sticky> -->
+    <!-- <van-tabs v-model="active">
       <van-tab title="关注">
         <p id="follow"></p>
       </van-tab>
@@ -21,57 +21,20 @@
       <van-tab title="圈子">
         <p id="circle"></p>
       </van-tab>
-    </van-tabs>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
+    </van-tabs> -->
+    <div id="content">
+      <div class="hot_swtich">
+        <div class="movie_menu">
+          <router-link to="/pagehome/recommend" class="hot_item"
+            >推荐</router-link
+          >
+          <router-link to="/pagehome/member" class="hot_item">会员</router-link>
+          <van-icon class="hot_item2" name="search" />
+        </div>
+      </div>
+    </div>
+
+    <router-view></router-view>
   </div>
 </template>
 

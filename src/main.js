@@ -26,7 +26,11 @@ import {
   Dialog,
   Toast,
   SwipeCell,
-  SubmitBar
+  SubmitBar,
+  IndexBar,
+  IndexAnchor,
+  Image,
+  Lazyload
 } from 'vant';
 // 引入mint-ui
 import MintUI from 'mint-ui'
@@ -58,6 +62,10 @@ Vue.use(SubmitBar);
 Vue.use(Dialog);
 Vue.use(Toast);
 Vue.use(SwipeCell);
+Vue.use(IndexBar);
+Vue.use(IndexAnchor);
+Vue.use(Image);
+Vue.use(Lazyload)
 import 'vant/lib/search/style';
 import 'vant/lib/sticky/style';
 
