@@ -7,7 +7,7 @@
 
     <!-- 购物车列表 -->
     <ul>
-      <li v-for="itme in songs" :key="itme.id">
+      <li v-for="(itme, index) in songs" :key="index">
         <input type="checkbox" name="" id="" />
         <img :src="itme.pimg" alt="" />
         <p class="name">{{ itme.pname }}</p>
@@ -17,6 +17,14 @@
           <button class="jia">+</button>
         </p>
         <p class="price">￥{{ itme.pprice }}<del>￥99</del></p>
+        <button
+          class="remove"
+          v-for="(itme, index) in songs"
+          :key="index"
+          @click="removeadd(itme.pid)"
+        >
+          删除
+        </button>
       </li>
     </ul>
     <!-- 结算 -->
@@ -25,7 +33,11 @@
         总价:<span v-for="(itme, index) in songs" :key="index"
           ><br />
           {{ index }}--- {{ itme.pprice }}---{{ itme.pnum }} ---
-          {{ (itme.price = Number(itme.pprice) * Number(itme.pnum)) }}
+          {{ (price = Number(itme.pprice) * Number(itme.pnum)) }}
+          <p>
+            {{ price }}
+            {{ (sum = sum + price) }}
+          </p>
         </span>
       </p>
 
@@ -57,10 +69,11 @@ export default {
   watch: {},
   //方法集合
   methods: {
+    //查询购物车列表
     async getGD() {
       //获取商品id
-      const pid = localStorage.getItem("pid");
-      console.log(pid);
+      // const pid = localStorage.getItem("pid");
+      // console.log(pid);
       const result = await axios.get(
         `http://jx.xuzhixiang.top/ap/api/cart-list.php?id=1`
       );
@@ -133,12 +146,15 @@ ul li img {
   float: left;
   margin-top: 1rem;
   width: 9.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .price {
   float: left;
   width: 9.4rem;
   position: absolute;
-  bottom: 1rem;
+  bottom: 2rem;
   left: 12rem;
   font-size: 1rem;
   color: rgb(149, 248, 1);
@@ -151,7 +167,7 @@ ul li img {
 .num {
   float: left;
   position: absolute;
-  top: 50%;
+  top: 40%;
   right: 20%;
 }
 .num .jian,
@@ -195,5 +211,14 @@ ul li img {
 .settlement p span {
   font-size: 1.5rem;
   color: red;
+}
+.remove {
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.5rem;
+  width: 3.5rem;
+  height: 1.5rem;
+  background: red;
+  border: none;
 }
 </style>

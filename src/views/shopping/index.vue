@@ -40,7 +40,7 @@
         <dl>
           <dt>
             <img
-              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2761424134,4196129814&fm=26&gp=0.jpg"
               alt=""
             />
           </dt>
@@ -49,7 +49,7 @@
         <dl>
           <dt>
             <img
-              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2171053430,3437009484&fm=26&gp=0.jpg"
               alt=""
             />
           </dt>
@@ -64,7 +64,7 @@
         <dl>
           <dt>
             <img
-              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3567045420,2464869570&fm=26&gp=0.jpg"
               alt=""
             />
           </dt>
@@ -73,7 +73,7 @@
         <dl>
           <dt>
             <img
-              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2953153701,2003217363&fm=26&gp=0.jpg"
               alt=""
             />
           </dt>
@@ -89,7 +89,7 @@
         <dl>
           <dt>
             <img
-              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3217228244,3996885929&fm=15&gp=0.jpg"
               alt=""
             />
           </dt>
@@ -98,7 +98,7 @@
         <dl>
           <dt>
             <img
-              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3419714950,1840670010&fm=26&gp=0.jpg"
               alt=""
             />
           </dt>
@@ -112,7 +112,7 @@
         <dl>
           <dt>
             <img
-              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2609405578,1076414391&fm=26&gp=0.jpg"
               alt=""
             />
           </dt>
@@ -121,7 +121,7 @@
         <dl>
           <dt>
             <img
-              src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=853373313,2651194444&fm=26&gp=0.jpg"
+              src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=353517405,2504196192&fm=26&gp=0.jpg"
               alt=""
             />
           </dt>
@@ -156,7 +156,7 @@
     <div v-if="showloading" class="loding">加载中...</div>
     <div v-if="showmore" class="showmore">没有更多数据了...</div>
 
-    <router-link to="/Cart">
+    <router-link to="/cart1">
       <span class="goods"><i class="el-icon-s-goods"></i></span>
     </router-link>
 
@@ -180,9 +180,9 @@ export default {
     return {
       value: "",
       images: [
-        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3896601762,374333792&fm=26&gp=0.jpg",
-        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3488147428,3962514625&fm=26&gp=0.jpg",
-        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=831479040,1172852968&fm=26&gp=0.jpg",
+        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3665546742,3479837807&fm=26&gp=0.jpg",
+        "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=201621336,1558706459&fm=26&gp=0.jpg",
+        "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2676080722,3166371197&fm=26&gp=0.jpg",
       ],
       songs: [], //电影列表
       time: 30 * 60 * 60 * 1000,
@@ -288,7 +288,7 @@ export default {
 }
 .daoji {
   width: 45%;
-  height: 150px;
+  height: 10rem;
   margin-left: 1.2rem;
   margin-bottom: 0.5rem;
   float: left;
@@ -312,14 +312,14 @@ export default {
 }
 .van dl dt img {
   width: 85%;
-  height: 85%;
+  height: 5.5rem;
 }
 .van dl dd {
   font-size: 1rem;
   color: red;
 }
 .van dl dd del {
-  font-size: 0.5rem;
+  font-size: 0.4rem;
   color: gray;
 }
 .hotlist-banner {

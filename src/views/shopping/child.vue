@@ -19,13 +19,23 @@
             >开通会员可省最高26元<van-icon class="arrow" name="arrow"
           /></span>
         </p>
+        <p class="member1">
+          活动<span>新人礼</span
+          ><span>首单惊喜，必备神器低至19元<van-icon name="arrow" /></span>
+        </p>
+        <p class="member2">
+          <span>加购价</span
+          ><span
+            >全场满￥219可在购物车换购热销商品<van-icon name="arrow"
+          /></span>
+        </p>
       </li>
     </ul>
 
     <!-- 底部 -->
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="客服" />
-      <router-link to="/Cart" tag="li" class="nav">
+      <router-link to="/cart1" tag="li" class="nav">
         <van-goods-action-icon icon="shop-o" text="购物车" />
       </router-link>
       <!-- <el-button type="text" @click="open" class="open"> -->
@@ -180,5 +190,70 @@ ul li .details {
 .member span .arrow {
   padding-right: 2rem;
   text-indent: 0.3rem;
+}
+.member1 {
+  width: 100%;
+  height: 2rem;
+  /* background: rgb(94, 240, 49); */
+  position: relative;
+  line-height: 2rem;
+  font-size: 0.6rem;
+  text-indent: 2rem;
+  color: gray;
+  border-bottom: 1px solid rgb(233, 232, 232);
+}
+.member1 span:nth-child(1) {
+  background: red;
+  margin-left: 1rem;
+  display: inline-block;
+  text-indent: 0rem;
+  text-align: center;
+  width: 3rem;
+  line-height: normal;
+  /* margin-right: 1.2rem; */
+  color: white;
+  font-weight: 600;
+}
+.member1 span:nth-child(2) {
+  margin-left: 2rem;
+}
+.member1 .van-icon {
+  float: left;
+  line-height: 2rem;
+  position: absolute;
+  top: 0;
+  right: 2rem;
+}
+.member2 {
+  width: 100%;
+  height: 2rem;
+  /* background: rgb(94, 240, 49); */
+  position: relative;
+  line-height: 2rem;
+  font-size: 0.6rem;
+  color: gray;
+  border-bottom: 1px solid rgb(233, 232, 232);
+}
+.member2 span:nth-child(1) {
+  background: red;
+  margin-left: 0.8rem;
+  display: inline-block;
+  margin-left: 2rem;
+  text-align: center;
+  width: 3rem;
+  line-height: normal;
+  /* margin-right: 1.2rem; */
+  color: white;
+  font-weight: 600;
+}
+.member2 span:nth-child(2) {
+  margin-left: 2rem;
+}
+.member2 .van-icon {
+  float: left;
+  line-height: 2rem;
+  position: absolute;
+  top: 0;
+  right: 2rem;
 }
 </style>
