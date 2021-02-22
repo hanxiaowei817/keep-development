@@ -36,6 +36,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
+    /* position: fixed; */
 }
 
 
@@ -72,6 +73,7 @@ body {
     align-items: center;
     background: white;
     z-index: 10;
+    position: fixed;
 }
 
 #content .movie_menu2 {
