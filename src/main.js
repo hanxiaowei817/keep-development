@@ -30,7 +30,9 @@ import {
   IndexBar,
   IndexAnchor,
   Image,
-  Lazyload
+  Lazyload,
+  Card,
+  Tag,
 } from 'vant';
 // 引入mint-ui
 import MintUI from 'mint-ui'
@@ -65,7 +67,11 @@ Vue.use(SwipeCell);
 Vue.use(IndexBar);
 Vue.use(IndexAnchor);
 Vue.use(Image);
-Vue.use(Lazyload)
+Vue.use(Lazyload, {
+  lazyComponent: true,
+});
+Vue.use(Card);
+Vue.use(Tag);
 import 'vant/lib/search/style';
 import 'vant/lib/sticky/style';
 
