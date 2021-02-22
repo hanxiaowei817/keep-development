@@ -1,29 +1,43 @@
 <!--  -->
 <template>
-  <div id="my">
+  <div id="my" @click="first">
     <div id="content">
       <div class="login_body">
         <!-- 登陆页面 -->
-        <div v-if="!isLogin">
-          <div>
-            <input
-              class="login_text"
-              type="text"
-              placeHolder="账户名/手机号/Email"
-            />
-          </div>
-          <div>
-            <input
-              class="login_text"
-              type="password"
-              placeHolder="请输入您的密码"
-            />
-          </div>
-          <div class="login_btn">
-            <input type="submit" value="登录" @click="login" />
-          </div>
+        <div v-if="!isLogin" class="loginandregister">
+          <el-form
+            :model="ruleForm"
+            status-icon
+            :rules="rules"
+            ref="ruleForm"
+            label-width="100px"
+            class="demo-ruleForm"
+          >
+            <el-form-item label="账号" prop="username">
+              <el-input
+                name="username"
+                type="text"
+                v-model="ruleForm.username"
+                placeholder="请设置登录用户名"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="密码" prop="pass">
+              <el-input
+                type="password"
+                v-model="ruleForm.pass"
+                autocomplete="off"
+              ></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="submitForm('ruleForm')"
+                >登录</el-button
+              >
+              <el-button @click="resetForm('ruleForm')">重置</el-button>
+            </el-form-item>
+          </el-form>
+
           <div class="login_link">
-            <a href="#">立即注册</a>
+            <a href="#" @click="register">立即注册</a>
             <a href="#">找回密码</a>
           </div>
         </div>
@@ -31,7 +45,7 @@
         <!-- 主页面 -->
         <div v-else>
           <div class="my-header">
-            <van-icon name="coupon-o" size="30" @click="myList" />
+            <van-icon name="coupon-o" size="30" @click.stop="myList" />
             <van-icon name="smile-o" size="30" class="smile-o" />
             <van-icon name="envelop-o" badge="43" size="30" />
           </div>
@@ -147,7 +161,7 @@
               title="退出登录"
               is-link
               value="退出"
-              @click="loginout"
+              @click.native="loginout"
               class="loginout"
             >
             </mt-cell>
@@ -160,7 +174,7 @@
     </div>
 
     <!-- 侧边栏 -->
-    <div v-show="show" class="my-left">
+    <div v-show="show" class="my-left" @click.stop>
       <div>
         <div>
           <p class="leftHeader">尊敬的客户</p>
@@ -212,7 +226,13 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 import Footer from "../../components/footer/footer";
-import { setToken, getToken, removeToken } from "../../utils/auth";
+import {
+  setToken,
+  getToken,
+  removeToken,
+  validateUsername,
+  validatePass,
+} from "../../utils/auth";
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {
@@ -224,6 +244,19 @@ export default {
       isLogin: getToken() || "",
       activeKey: 0,
       show: false,
+      registershow: false,
+      ruleForm: {
+        pass: "",
+      },
+      dynamicValidateForm: {
+        email: "",
+      },
+      rules: {
+        username: [
+          { required: true, trigger: "blur", validator: validateUsername },
+        ],
+        pass: [{ required: true, validator: validatePass, trigger: "blur" }],
+      },
     };
   },
   //监听属性 类似于data概念
@@ -232,16 +265,37 @@ export default {
   watch: {},
   //方法集合
   methods: {
-    login() {
-      setToken("获取到token");
-      this.isLogin = true;
-    },
     loginout() {
       removeToken();
       this.isLogin = false;
     },
     myList() {
       this.show = true;
+    },
+    submitForm(ruleForm) {
+      console.log(this.$refs);
+      this.$refs[ruleForm].validate((valid) => {
+        console.log(valid);
+        // if (valid) {
+        //   alert("submit!");
+        setToken("获取到token");
+        this.isLogin = true;
+        // } else {
+        //   console.log("error submit!!");
+        //   return false;
+        // }
+      });
+    },
+    resetForm(ruleForm) {
+      this.$refs[ruleForm].resetFields();
+    },
+    register() {
+      this.$router.push({
+        path: "/register",
+      });
+    },
+    first() {
+      this.show = false;
     },
   },
   //生命周期 - 创建完成（可以访问当前this实例）
@@ -411,6 +465,7 @@ export default {
   height: 140px;
   margin: 5px;
   background: snow;
+  margin-bottom: 50px;
 }
 .my-footerheader {
   display: flex;
@@ -483,5 +538,14 @@ export default {
   line-height: 50px;
   background: ghostwhite;
   width: 280px;
+}
+.regitershow {
+  position: absolute;
+  top: 20px;
+  left: 0;
+}
+.loginandregister {
+  padding-top: 20px;
+  height: 300px;
 }
 </style>
