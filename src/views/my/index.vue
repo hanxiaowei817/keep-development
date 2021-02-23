@@ -3,47 +3,8 @@
   <div id="my" @click="first">
     <div id="content">
       <div class="login_body">
-        <!-- 登陆页面 -->
-        <div v-if="!isLogin" class="loginandregister">
-          <el-form
-            :model="ruleForm"
-            status-icon
-            :rules="rules"
-            ref="ruleForm"
-            label-width="100px"
-            class="demo-ruleForm"
-          >
-            <el-form-item label="账号" prop="username">
-              <el-input
-                name="username"
-                type="text"
-                v-model="ruleForm.username"
-                placeholder="请设置登录用户名"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="密码" prop="pass">
-              <el-input
-                type="password"
-                v-model="ruleForm.pass"
-                autocomplete="off"
-              ></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="submitForm('ruleForm')"
-                >登录</el-button
-              >
-              <el-button @click="resetForm('ruleForm')">重置</el-button>
-            </el-form-item>
-          </el-form>
-
-          <div class="login_link">
-            <a href="#" @click="register">立即注册</a>
-            <a href="#">找回密码</a>
-          </div>
-        </div>
-
         <!-- 主页面 -->
-        <div v-else>
+        <div>
           <div class="my-header">
             <van-icon name="coupon-o" size="30" @click.stop="myList" />
             <van-icon name="smile-o" size="30" class="smile-o" />
@@ -243,13 +204,9 @@ export default {
     return {
       isLogin: getToken() || "",
       activeKey: 0,
-      show: false,
-      registershow: false,
+      show: false, //先让侧边栏 不显示
       ruleForm: {
         pass: "",
-      },
-      dynamicValidateForm: {
-        email: "",
       },
       rules: {
         username: [
@@ -257,6 +214,8 @@ export default {
         ],
         pass: [{ required: true, validator: validatePass, trigger: "blur" }],
       },
+      //  结尾有分号
+      semi: 0,
     };
   },
   //监听属性 类似于data概念
@@ -267,35 +226,33 @@ export default {
   methods: {
     loginout() {
       removeToken();
-      this.isLogin = false;
+      this.$router.push({
+        path: "/login",
+      });
     },
     myList() {
-      this.show = true;
+      this.show = true; //点击icon 让侧边栏显示
     },
     submitForm(ruleForm) {
       console.log(this.$refs);
       this.$refs[ruleForm].validate((valid) => {
         console.log(valid);
-        // if (valid) {
-        //   alert("submit!");
-        setToken("获取到token");
-        this.isLogin = true;
-        // } else {
-        //   console.log("error submit!!");
-        //   return false;
-        // }
+        if (valid) {
+          alert("submit!");
+          setToken("获取到token");
+          this.isLogin = true; //登录成功，让登录页面消失，显示主页面
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
       });
     },
     resetForm(ruleForm) {
       this.$refs[ruleForm].resetFields();
     },
-    register() {
-      this.$router.push({
-        path: "/register",
-      });
-    },
+
     first() {
-      this.show = false;
+      this.show = false; //点击主页面，让侧边栏隐藏，做了阻止冒泡
     },
   },
   //生命周期 - 创建完成（可以访问当前this实例）

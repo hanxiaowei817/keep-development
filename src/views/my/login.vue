@@ -1,8 +1,8 @@
 <!--  -->
 <template>
   <div class="">
-    <!-- 注册页面  -->
-    <div class="my-register">
+    <!-- 登陆页面 -->
+    <div>
       <el-form
         :model="ruleForm"
         status-icon
@@ -16,7 +16,7 @@
             name="username"
             type="text"
             v-model="ruleForm.username"
-            placeholder="6-12个字符"
+            placeholder="请填写账号/邮箱/手机号"
           ></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pass">
@@ -24,30 +24,22 @@
             type="password"
             v-model="ruleForm.pass"
             autocomplete="off"
-            placeholder="不得小于6位字符"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="邮箱" prop="email">
-          <el-input
-            type="email"
-            v-model="ruleForm.email"
-            placeholder="请输入邮箱"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="手机号" prop="phone">
-          <el-input
-            type="text"
-            v-model="ruleForm.phone"
-            placeholder="请输入手机号"
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">
-            注册
-          </el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')"
+            >登录</el-button
+          >
           <el-button @click="resetForm('ruleForm')">重置</el-button>
         </el-form-item>
       </el-form>
+
+      <div class="login_link">
+        <router-link to="/register">
+          <a href="#">立即注册</a>
+        </router-link>
+        <a href="#">找回密码</a>
+      </div>
     </div>
   </div>
 </template>
@@ -55,12 +47,7 @@
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-import {
-  validateUsername,
-  validatePass,
-  validateEmail,
-  validatePhone,
-} from "../../utils/auth";
+import { validateUsername, validatePass } from "../../utils/auth";
 import axios from "axios"; // 引入axios
 
 export default {
@@ -70,21 +57,15 @@ export default {
     //这里存放数据
     return {
       ruleForm: {
-        username: "",
         pass: "",
         email: "",
-        phone: "",
       },
       rules: {
         username: [
           { required: true, trigger: "blur", validator: validateUsername },
         ],
         pass: [{ required: true, validator: validatePass, trigger: "blur" }],
-        email: [{ required: true, trigger: "blur", validator: validateEmail }],
-        phone: [{ required: true, trigger: "blur", validator: validatePhone }],
       },
-      //  结尾有分号
-      semi: 0,
     };
   },
   //监听属性 类似于data概念
@@ -94,37 +75,30 @@ export default {
   //方法集合
   methods: {
     submitForm(ruleForm) {
-      // const registerBtn = document.querySelectorAll(".el-input__inner");
-      // console.log(registerBtn);
+      const registerBtn = document.querySelectorAll(".el-input__inner");
+      let username = registerBtn[0].value;
+      let pass = registerBtn[1].value;
+
       // console.log(this.$refs);
-      let username = this.ruleForm.username;
-      let pass = this.ruleForm.pass;
-      console.log(this.ruleForm.username, this.ruleForm.pass);
       this.$refs[ruleForm].validate((valid) => {
         // console.log(valid);
         if (valid) {
           // alert("submit!");
+          // setToken("获取到token");
           axios
-            .get(
-              // `http://jx.xuzhixiang.top/ap/api/reg.php?username=${username}&password=${pass}`
-              // {
-              //   username,
-              //   password: pass,
-              // }
-              `http://jx.xuzhixiang.top/ap/api/reg.php`,
-              {
-                params: {
-                  username,
-                  password: pass,
-                },
-              }
-            )
-
+            .get(`http://jx.xuzhixiang.top/ap/api/login.php`, {
+              params: {
+                username,
+                password: pass,
+              },
+            })
             .then((res) => {
               console.log(res);
               // console.log(res.data.code);
               if (res.data.code == 1) {
-                this.$router.push("/login");
+                this.$router.push("/my");
+                localStorage.setItem("uid", res.data.data.id);
+                localStorage.setItem("token", res.data.data.token);
               }
             });
         } else {
@@ -132,9 +106,6 @@ export default {
           return false;
         }
       });
-    },
-    resetForm(ruleForm) {
-      this.$refs[ruleForm].resetFields();
     },
   },
   //生命周期 - 创建完成（可以访问当前this实例）
@@ -151,8 +122,18 @@ export default {
 };
 </script>
 <style scoped>
-.my-register {
-  margin-left: -35px;
+.login_link {
+  display: flex;
+  justify-content: space-between;
+}
+.login_link a {
+  text-decoration: none;
+  margin: 0 5px;
+  font-size: 12px;
+  color: #e54847;
+}
+.demo-ruleForm {
+  margin-left: -30px;
   margin-top: 30px;
 }
 </style>

@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'  // 引入cookie
+
 // 先定义一个常量，这样的话方便于后续操作
 const TokenKey = 'Admin-Token'
 // 设置cookie
@@ -32,4 +33,34 @@ export function validatePass(rule, value, callback) {
   } else {
     callback()
   }
+}
+
+// 验证邮箱
+export function validateEmail(rule, value, callback) {
+  const emailReg = /^\w+[-+.]*\w*@([a-z0-9A-Z\u2E80-\u9FFF]-?)+(\.\w{2,6})+/
+  if (!value) {
+    return callback(new Error('邮箱不能为空!!'))
+  }
+  setTimeout(() => {
+    if (!emailReg.test(value)) {
+      return callback(new Error('邮箱格式错误'))
+    } else {
+      callback()
+    }
+  }, 100)
+}
+
+// 验证手机号
+export function validatePhone(rule, value, callback) {
+  const phoneReg = /^[1][3,4,5,7,8][0-9]{9}$/
+  if (!value) {
+    return callback(new Error('手机号码不能为空!!'))
+  }
+  setTimeout(() => {
+    if (!phoneReg.test(value)) {
+      return callback(new Error('手机号码格式错误'))
+    } else {
+      callback()
+    }
+  }, 100)
 }

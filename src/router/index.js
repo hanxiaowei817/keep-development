@@ -59,6 +59,10 @@ const router = new VueRouter({
         path: '/register', //路由级组件
         component: () => import('../views/my/register.vue'),
     },
+    {
+        path: '/login', //路由级组件
+        component: () => import('../views/my/login.vue'),
+    },
     ],
     linkActiveClass: 'active'
 })
