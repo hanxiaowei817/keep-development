@@ -67,7 +67,7 @@
       :key="index"
       height="200"
       width="95%"
-      id="img"
+      id="imgList"
     />
   </div>
 </template>
@@ -129,8 +129,5 @@ export default {
 <style  scoped>
 #swipe {
   margin-top: 50px;
-}
-#img {
-  margin: 10px auto;
 }
 </style>

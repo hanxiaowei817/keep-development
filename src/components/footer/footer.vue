@@ -65,6 +65,7 @@ export default {
   position: fixed;
   left: 0;
   bottom: 0;
+  z-index: 100;
 }
 #footer ul {
   display: flex;
