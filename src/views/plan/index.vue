@@ -1,6 +1,7 @@
 <!--  -->
 <template>
   <div id="external">
+    <Header></Header>
     <van-button round type="primary" id="plan">免费获取计划</van-button>
 
     <div class="head">
@@ -115,10 +116,12 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 import Footer from "../../components/footer/footer";
+import Header from "../../components/header/header";
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {
     Footer,
+    Header,
   },
   data() {
     //这里存放数据

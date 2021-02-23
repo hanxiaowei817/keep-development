@@ -33,6 +33,7 @@ import {
   Lazyload,
   Card,
   Tag,
+  NoticeBar
 } from 'vant';
 // 引入mint-ui
 import MintUI from 'mint-ui'
@@ -72,6 +73,7 @@ Vue.use(Lazyload, {
 });
 Vue.use(Card);
 Vue.use(Tag);
+Vue.use(NoticeBar);
 import 'vant/lib/search/style';
 import 'vant/lib/sticky/style';
 
