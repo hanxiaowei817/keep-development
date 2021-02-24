@@ -256,7 +256,14 @@ export default {
     },
   },
   //生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
+  created() {
+    if (!localStorage.getItem("uid")) {
+      alert("请先登录");
+      this.$router.push({
+        path: "/login",
+      });
+    }
+  },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   beforeCreate() {}, //生命周期 - 创建之前
@@ -315,7 +322,11 @@ export default {
   position: fixed;
   top: 0px;
   left: 0;
-  margin: 5px;
+  /* margin: 5px; */
+
+  background: white;
+}
+.van-icon-coupon-o {
   margin-top: 10px;
 }
 .smile-o {
@@ -341,7 +352,7 @@ export default {
 }
 .keep-huiyuan {
   height: 60px;
-  background: purple;
+  /* background: purple; */
   position: relative;
 }
 .keep-huiyuan p:nth-child(1) {
@@ -448,7 +459,7 @@ export default {
 .loginout {
   width: 375px;
   height: 40px;
-  background: #e54847;
+  /* background: #e54847; */
 }
 .my-left {
   width: 280px;
@@ -474,14 +485,14 @@ export default {
   font-size: 20px;
   font-weight: 900;
   line-height: 50px;
-  background: ghostwhite;
+  background: white;
   width: 280px;
 }
 .leftActive {
   margin-top: 50px;
   width: 280px;
   font-size: 20px;
-  background: fuchsia;
+  background: white;
   text-indent: 30px;
   height: 40px;
   border-radius: 20px;
