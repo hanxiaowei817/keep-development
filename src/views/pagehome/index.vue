@@ -6,7 +6,7 @@
     <!-- <van-sticky>
       <div>
         <h3 style="height: 40px; line-height: 40px; background: red">
-          首页123
+          首页
           <van-icon name="search" />
           <van-icon name="friends" />
         </h3>
