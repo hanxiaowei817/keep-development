@@ -78,6 +78,10 @@ const router = new VueRouter({
         path: '/my', //路由级组件
         component: () => import('../views/my/index.vue'),
     },
+{
+        path: '/login', //路由级组件
+        component: () => import('../views/my/login.vue'),
+    },
     {
         path: '/register', //路由级组件
         component: () => import('../views/my/register.vue'),

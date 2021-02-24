@@ -94,14 +94,20 @@ export default {
     async GetAdd() {
       const pidtow = localStorage.getItem("pid");
       console.log(pidtow);
+      const id = localStorage.getItem("uid");
+      console.log(id);
       const gadd = await axios.get(
-        ` http://jx.xuzhixiang.top/ap/api/add-product.php?uid=1&pid=${pidtow}&pnum=1`
+        ` http://jx.xuzhixiang.top/ap/api/add-product.php?uid=${id}&pid=${pidtow}&pnum=1`
       );
       console.log(gadd);
       if (gadd.status == 200) {
-        alert(gadd.data.msg);
+        this.$dialog.alert({
+          message: "添加成功",
+        });
       } else {
-        alert("商品信息错误，无法加入购物车");
+        this.$dialog.alert({
+          message: "添加成功失败",
+        });
       }
     },
 

@@ -49,6 +49,7 @@
         </button>
       </div>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -56,9 +57,12 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 import axios from "axios";
+import Footer from "../../components/footer/footer";
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: {},
+  components: {
+    Footer,
+  },
   data() {
     //这里存放数据
     return {
@@ -75,8 +79,10 @@ export default {
   //方法集合
   methods: {
     async getGD() {
+      const id = localStorage.getItem("uid");
+      console.log(id);
       const result = await axios.get(
-        `http://jx.xuzhixiang.top/ap/api/cart-list.php?id=1`
+        `http://jx.xuzhixiang.top/ap/api/cart-list.php?id=${id}`
       );
       this.shoppingList = result.data.data;
       console.log(this.shoppingList);
@@ -84,13 +90,13 @@ export default {
     selectGoods(item) {
       //商品单选选择方法
       item.isSelect = !item.isSelect; //改变选择状态
-      // this.allSelect = false;
+      this.allSelect = false;
       console.log(item.isSelect);
 
       if (item.isSelect == true) {
-        this.sum = this.sum + item.pprice * item.pnum;
+        this.sum = this.sum + parseInt(item.pprice) * item.pnum;
       } else {
-        this.sum = this.sum - item.pprice * item.pnum;
+        this.sum = this.sum - parseInt(item.pprice) * item.pnum;
       } //结算处商品总额计算
     },
     allGoodsSelect() {
@@ -103,16 +109,16 @@ export default {
           this.shoppingList[i].isSelect = true;
           this.sum =
             this.sum +
-            parseFloat(this.shoppingList[i].pprice) *
+            parseInt(this.shoppingList[i].pprice) *
               parseInt(this.shoppingList[i].pnum);
         }
       } else {
         for (let i = 0; i < this.shoppingList.length; i++) {
+          this.shoppingList[i].isSelect = false;
           this.sum =
             this.sum -
-            parseFloat(this.shoppingList[i].pprice) *
+            parseInt(this.shoppingList[i].pprice) *
               parseInt(this.shoppingList[i].pnum);
-          this.shoppingList[i].isSelect = false;
         }
       } //结算处商品总额计算
     },
@@ -121,13 +127,15 @@ export default {
       item.pnum++;
       //获取商品id
       console.log(item.pid);
+      const id = localStorage.getItem("uid");
+      console.log(id);
       const result = await axios.get(
-        `http://jx.xuzhixiang.top/ap/api/cart-update-num.php?uid=1&pid=${item.pid}&pnum=${item.pnum}`
+        `http://jx.xuzhixiang.top/ap/api/cart-update-num.php?uid=${id}&pid=${item.pid}&pnum=${item.pnum}`
       );
       console.log(result);
 
       if (item.isSelect == true) {
-        this.sum = this.sum + parseFloat(item.pprice);
+        this.sum = this.sum + parseInt(item.pprice);
       } //已选择商品增加数量，需要增加总额
     },
     async numDel(item, index) {
@@ -135,36 +143,45 @@ export default {
       item.pnum--;
       //获取商品id
       console.log(item.pid);
+      const id = localStorage.getItem("uid");
+      console.log(id);
       const result = await axios.get(
-        `http://jx.xuzhixiang.top/ap/api/cart-update-num.php?uid=1&pid=${item.pid}&pnum=${item.pnum}`
+        `http://jx.xuzhixiang.top/ap/api/cart-update-num.php?uid=${id}&pid=${item.pid}&pnum=${item.pnum}`
       );
       console.log(result);
 
       if (item.isSelect == true) {
-        this.sum = this.sum + parseFloat(item.pprice);
+        this.sum = this.sum - parseInt(item.pprice);
       } //已选择商品减少数量，需要减少总额
       if (item.pnum < 1) {
         console.log(item.pid);
         this.shoppingList.splice(index, 1);
+        const id = localStorage.getItem("uid");
+        console.log(id);
         const result = await axios.get(
-          `http://jx.xuzhixiang.top/ap/api/cart-delete.php?uid=1&pid=${item.pid}`
+          `http://jx.xuzhixiang.top/ap/api/cart-delete.php?uid=${id}&pid=${item.pid}`
         );
         console.log(result);
       } //数量减少为0，需要删除对应数据
     },
     buyGoods() {
       //购买方法，这里只弹出提示所购买商品总额
-      alert("购买成功,共花费" + this.sum + "元");
+      this.$dialog.alert({
+        message: "购买成功,共花费" + this.sum + "元",
+      });
+      // alert("购买成功,共花费" + this.sum + "元");
     },
     async delGoods() {
       //删除商品方法
       this.sum = 0; //所选商品被删除，总额置0
+      const id = localStorage.getItem("uid");
+      console.log(id);
       for (var i = 0; i < this.shoppingList.length; i++) {
         if (this.shoppingList[i].isSelect) {
           console.log(this.shoppingList[i].pid);
 
           const result = await axios.get(
-            `http://jx.xuzhixiang.top/ap/api/cart-delete.php?uid=1&pid=${this.shoppingList[i].pid}`
+            `http://jx.xuzhixiang.top/ap/api/cart-delete.php?uid=${id}&pid=${this.shoppingList[i].pid}`
           );
           console.log(result);
 
@@ -204,7 +221,7 @@ body {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 1;
 }
 button {
   outline: none;
@@ -286,9 +303,10 @@ input {
   width: 99%;
   height: 1.5rem;
   border: 1px #c0bfbf solid;
+  border-bottom: none;
   border-left: none;
   border-right: none;
-  bottom: 0;
+  bottom: 3rem;
   left: 0;
   background: #fff;
   display: flex;

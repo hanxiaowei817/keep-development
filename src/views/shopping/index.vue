@@ -386,11 +386,12 @@ export default {
 .goods {
   position: fixed;
   right: 1.3rem;
-  top: 44rem;
+  top: 85%;
   width: 2.5rem;
   height: 2.5rem;
-  background: yellowgreen;
+  background: red;
   border-radius: 50%;
+  z-index: 333;
 }
 .el-icon-s-goods {
   font-size: 1.5rem;
