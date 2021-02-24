@@ -238,14 +238,6 @@ export default {
   margin-top: 12px;
   font-size: 21px;
 }
-/* .ranking,
-.dynamic,
-.Movemen-data,
-.exercise-course ,
-#Individual,
-.mayknow{
-  width: 143%;
-} */
 
 .ranking {
   height: 50px;
@@ -262,7 +254,7 @@ export default {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  float: right;
+  /* float: right; */
   margin-top: 10px;
   margin-right: 10px;
 }
