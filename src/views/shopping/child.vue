@@ -145,6 +145,12 @@ export default {
 };
 </script>
 <style  scoped>
+.nav .van-nav-bar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 ul {
   margin-top: 3rem;
 }

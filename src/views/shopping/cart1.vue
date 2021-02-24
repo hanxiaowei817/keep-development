@@ -14,7 +14,7 @@
         >
           <!--列表项-->
           <div
-            class="selectCircle"
+            class="selectCircle dan"
             :class="{ checked: item.isSelect }"
             @click="selectGoods(item)"
           ></div>
@@ -38,7 +38,7 @@
       <div class="bottomMain">
         <!--底部固定栏-->
         <div
-          class="selectCircle"
+          class="selectCircle quan"
           :class="{ checked: allSelect }"
           @click="allGoodsSelect"
         ></div>
@@ -82,9 +82,11 @@ export default {
       console.log(this.shoppingList);
     },
     selectGoods(item) {
-      //商品选择方法
+      //商品单选选择方法
       item.isSelect = !item.isSelect; //改变选择状态
-      this.allSelect = false;
+      // this.allSelect = false;
+      console.log(item.isSelect);
+
       if (item.isSelect == true) {
         this.sum = this.sum + item.pprice * item.pnum;
       } else {
@@ -93,18 +95,23 @@ export default {
     },
     allGoodsSelect() {
       //全选商品方法
+      // console.log(this.allSelect);
       this.allSelect = !this.allSelect; //改变选择状态
       if (this.allSelect == true) {
         this.sum = 0;
         for (let i = 0; i < this.shoppingList.length; i++) {
           this.shoppingList[i].isSelect = true;
           this.sum =
-            this.sum + this.shoppingList[i].pprice * this.shoppingList[i].pnum;
+            this.sum +
+            parseFloat(this.shoppingList[i].pprice) *
+              parseInt(this.shoppingList[i].pnum);
         }
       } else {
         for (let i = 0; i < this.shoppingList.length; i++) {
           this.sum =
-            this.sum - this.shoppingList[i].pprice * this.shoppingList[i].pnum;
+            this.sum -
+            parseFloat(this.shoppingList[i].pprice) *
+              parseInt(this.shoppingList[i].pnum);
           this.shoppingList[i].isSelect = false;
         }
       } //结算处商品总额计算
@@ -120,7 +127,7 @@ export default {
       console.log(result);
 
       if (item.isSelect == true) {
-        this.sum = this.sum + Number(item.pprice);
+        this.sum = this.sum + parseFloat(item.pprice);
       } //已选择商品增加数量，需要增加总额
     },
     async numDel(item, index) {
@@ -134,7 +141,7 @@ export default {
       console.log(result);
 
       if (item.isSelect == true) {
-        this.sum = this.sum - Number(item.pprice);
+        this.sum = this.sum + parseFloat(item.pprice);
       } //已选择商品减少数量，需要减少总额
       if (item.pnum < 1) {
         console.log(item.pid);
@@ -298,7 +305,7 @@ input {
   background-color: #e26411;
   font-size: 0.5rem;
   border-radius: 25px;
-  margin: -2.8px 0 0 20px;
+  margin: -2.8px 0 0 10px;
 }
 .bottombtn2 {
   width: 70px;
@@ -313,5 +320,10 @@ input {
 .checked {
   background: #e26411;
   border: 1px solid rgba(0, 0, 0, 0);
+}
+.bottomMain span {
+  padding: 0;
+  height: 100%;
+  width: 3rem;
 }
 </style>
