@@ -33,16 +33,35 @@ const router = new VueRouter({
             path: '/plan', //路由级组件
             component: () => import('../views/plan/index.vue')
 
-        }, {
+        }, 
+         // 社区
+     {
+        path: '/motion', //路由级组件
+        component: () =>
+            import ('../views/motion/motionone/index.vue'),
+        // 运动二级路由
+        children: []
+    },
+    // 好友搜索
+    {
+        path: '/appfriends',
+        // redirect: '/motion',
+        component: () =>
+            import ('../views/motion/appfriends/index.vue')
+    },
+    // 搜索框
+    {
+        path: '/searchBox',
+        // redirect: '/motion',
+        component: () =>
+            import ('../views/motion/searchBox/index.vue')
+    },
+        {
             path: '/information', //路由级组件
             component: () => import('../views/plan/information.vue')
 
         },
-        {
-            path: '/motion', //路由级组件
-            component: () => import('../views/motion/index.vue')
-
-        },
+       
         {
             path: '/shopping', //路由级组件
             component: () => import('../views/shopping/index.vue'),
