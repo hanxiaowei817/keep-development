@@ -2,8 +2,9 @@
 <template>
   <div id="external">
     <Header></Header>
-    <van-button round type="primary" id="plan">免费获取计划</van-button>
-
+<router-link to="/information" >
+    <van-button round type="primary" id="plan" >免费获取计划</van-button>
+</router-link>
     <div class="head">
       <h3>训练计划</h3>
       <h3>高效达成减脂目标</h3>
@@ -127,8 +128,8 @@ export default {
     //这里存放数据
     return {
       images: [
-        "https://img01.yzcdn.cn/vant/apple-1.jpg",
-        "https://img01.yzcdn.cn/vant/apple-2.jpg",
+        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=323660265,633030067&fm=26&gp=0.jpg",
+        "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1399277936,1957811708&fm=26&gp=0.jpg",
       ],
     };
   },
@@ -159,13 +160,13 @@ export default {
 }
 /* 按钮 */
 #plan {
-  width: 300px;
-  height: 70px;
+  width: 70%;
+  height: 10%;
   font-size: 20px;
   color: rgb(247, 246, 246);
   position: fixed;
-  left: 30px;
-  top: 530px;
+  left: 15%;
+  bottom: 80px;
   z-index: 999;
 }
 /* 头部 */
