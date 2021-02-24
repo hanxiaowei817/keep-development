@@ -23,7 +23,7 @@
         <p id="circle"></p>
       </van-tab>
     </van-tabs> -->
-    <div id="content">
+    <!-- <div id="content">
       <div class="hot_swtich">
         <div class="movie_menu">
           <router-link to="/pagehome/recommend" class="hot_item"
@@ -33,9 +33,17 @@
           <van-icon class="hot_item2" name="search" />
         </div>
       </div>
-    </div>
-
-    <router-view></router-view>
+    </div> -->
+    <van-tabs sticky animated>
+      <van-tab
+        v-for="item in list"
+        :title="item.title"
+        :key="item.index"
+        :to="item.router"
+      >
+        <router-view></router-view>
+      </van-tab>
+    </van-tabs>
   </div>
 </template>
 
@@ -52,7 +60,12 @@ export default {
   },
   data() {
     //这里存放数据
-    return {};
+    return {
+      list: [
+        { title: "推荐", router: "/pagehome/recommend" },
+        { title: "会员", router: "/pagehome/member" },
+      ],
+    };
   },
   //监听属性 类似于data概念
   computed: {},
