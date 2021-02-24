@@ -33,6 +33,10 @@ const router = new VueRouter({
         path: '/plan', //路由级组件
         component: () => import('../views/plan/index.vue')
 
+    },{
+        path: '/information', //路由级组件
+        component: () => import('../views/plan/information.vue')
+
     },
     {
         path: '/motion', //路由级组件
@@ -58,10 +62,6 @@ const router = new VueRouter({
     {
         path: '/register', //路由级组件
         component: () => import('../views/my/register.vue'),
-    },
-    {
-        path: '/login', //路由级组件
-        component: () => import('../views/my/login.vue'),
     },
     ],
     linkActiveClass: 'active'

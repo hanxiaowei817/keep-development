@@ -33,21 +33,32 @@ import {
   Lazyload,
   Card,
   Tag,
-  NoticeBar
+  NoticeBar,
+Calendar, 
+  Cell,
+  Form,
+  Field,
+  RadioGroup,
+  radio,
+  stepper,
 } from 'vant';
 // 引入mint-ui
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
 import {
-  Cell,
   InfiniteScroll
 } from 'mint-ui';
 Vue.use(InfiniteScroll);
 
 Vue.component(Cell.name, Cell);
 
-
+Vue.use(stepper);
+Vue.use(radio);
+Vue.use(RadioGroup);
+Vue.use(Field);
+Vue.use(Form);
+Vue.use(Calendar);
 Vue.use(Sidebar);
 Vue.use(SidebarItem);
 Vue.use(Search);

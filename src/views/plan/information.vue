@@ -28,7 +28,9 @@
     
 
     <div style="margin: 16px;">
+        <router-link to="../pagehome/recommend">
     <van-button round block type="info" native-type="submit">提交</van-button>
+        </router-link>
   </div>
 </van-form>
   
