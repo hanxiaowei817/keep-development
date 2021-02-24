@@ -38,7 +38,7 @@
       <van-tab
         v-for="item in list"
         :title="item.title"
-        :key="item"
+        :key="item.index"
         :to="item.router"
       >
         <router-view></router-view>
