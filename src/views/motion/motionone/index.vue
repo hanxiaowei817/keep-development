@@ -4,7 +4,7 @@
     <Footer></Footer>
 
     <div class="header">
-      <van-tabs v-model="active" class="headtop">
+      <van-tabs v-model="active" sticky class="headtop"  animated swipeable>
         <van-tab title="关注">
 
           <!-- 动态部分 -->
@@ -61,50 +61,15 @@
             <van-cell title="你可能想认识他们" is-link class="mayknow-nmd"/>
             <van-divider />
             <ul class="">
-              <li>
+              <li
+               v-for="(item,index) in list" :key=index>
                 <van-card
                   desc="有可能认识的人"
-                  title="东子EaMILE"
-                  thumb="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2980445260,41238050&fm=26&gp=0.jpg"
+                  :title="item.owner.name"
+                  :thumb="item.owner.face"
                 >
                   <template #footer>
-                    <van-button size="mini">点赞11</van-button>
-                    <van-button size="mini">关注</van-button>
-                  </template>
-                </van-card>
-              </li>
-              <li>
-                <van-card
-                  desc="附近的人"
-                  title="惠子"
-                  thumb="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2631334549,246605465&fm=26&gp=0.jpg"
-                >
-                  <template #footer>
-                    <van-button size="mini">点赞40</van-button>
-                    <van-button size="mini">关注</van-button>
-                  </template>
-                </van-card>
-              </li>
-              <li>
-                <van-card
-                  desc="附近的人"
-                  title="宋家乐"
-                  thumb="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1870521716,857441283&fm=26&gp=0.jpg"
-                >
-                  <template #footer>
-                    <van-button size="mini">点赞88</van-button>
-                    <van-button size="mini">关注</van-button>
-                  </template>
-                </van-card>
-              </li>
-              <li>
-                <van-card
-                  desc="优品内容贡献者"
-                  title="miss朱zhu"
-                  thumb="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1456245851,2859541796&fm=26&gp=0.jpg"
-                  class="personal-details">
-                  <template #footer class="footer">
-                    <van-button size="mini">点赞65</van-button>
+                    <van-button size="mini">点赞{{item.duration}}</van-button>
                     <van-button size="mini">关注</van-button>
                   </template>
                 </van-card>
@@ -114,13 +79,13 @@
           </div>
         </van-tab>
         <van-tab title="动态">
-          <div id="Individual">
+          <div id="Individual"  v-for="(item,index) in list" :key=index>
             <div class="Individual-model">
               <div>
-                <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3112949958,3368392492&fm=11&gp=0.jpg" alt="">
+                <img :src="item.owner.face" alt="">
                 <div class="Individual-name">
-                  <p><b>婷大仙儿--</b></p>
-                  <p>5.1万人关注了她</p>
+                  <p><b>{{item.owner.name}}</b></p>
+                  <p>{{item.duration}}人关注</p>
                 </div>
                 <div class="Individual-attention">
                   关注
@@ -128,10 +93,17 @@
               </div>
             </div>
             <div class="van-multi-ellipsis--l2 Individual-text">
-              这是一段最多显示两行的文字，多余的内容会被省略这是一段最多显示两行的文字，多余的内容会被省略这是一段最多显示两行的文字，多余的内容会被省略
+              {{item.dynamic}}
             </div>
             <div class="Individual-img">
                 <van-image
+                  width="90%"
+                  height="300px"
+                  fit="contain"
+                  :src="item.pic"
+                  class="myimg"
+                />
+                <!-- <van-image
                   width="33%"
                   height="100px"
                   fit="contain"
@@ -142,19 +114,13 @@
                   height="100px"
                   fit="contain"
                   src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi1.sinaimg.cn%2FIT%2F2010%2F0419%2F201041993511.jpg&refer=http%3A%2F%2Fi1.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1616740093&t=36aa6fb453da10a3c9cc531aaa0b031c"
-                />
-                <van-image
-                  width="33%"
-                  height="100px"
-                  fit="contain"
-                  src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi1.sinaimg.cn%2FIT%2F2010%2F0419%2F201041993511.jpg&refer=http%3A%2F%2Fi1.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1616740093&t=36aa6fb453da10a3c9cc531aaa0b031c"
-                />
+                /> -->
             </div>
             <div class="Individual-give">
              <van-icon name="bullhorn-o" class="Individual-give1"/>
-             <span>1.6万</span>
+             <span>{{item.stat.like}}</span>
              <van-icon name="chat-o"  class="Individual-give2"/>
-             <span>3552</span>
+             <span>{{item.stat.coin}}</span>
              <van-icon name="ellipsis"  class="Individual-give3"/>
             </div>
             
@@ -166,13 +132,17 @@
         <van-tab title="朋友圈">
           <p id="circle">3</p>
         </van-tab>
+        <van-tab title="" to="/appfriends">
+          <template #title> <van-icon name="friends-o" /></template>
+      
+        </van-tab>
+        <van-tab title="" to="/searchBox">
+        <template #title> <van-icon name="more-o" /></template>
+      
+        </van-tab>
       </van-tabs>
-      <router-link to="/appfriends">
-        <van-icon name="friends-o" class="appfriends" />
-      </router-link>
-      <router-link to="/searchBox">
-        <van-icon name="search" class="searchBox" />
-      </router-link>
+      
+      
     </div>
 
   </div>
@@ -185,8 +155,12 @@
 
 import Footer from "../../../components/footer/footer";
 import Vue from 'vue';
-import { Cell, CellGroup } from 'vant';
+import { Cell, CellGroup , Tab, Tabs } from 'vant';
 import { Divider } from 'vant';
+import  axios from 'axios'
+
+Vue.use(Tab);
+Vue.use(Tabs);
 
 Vue.use(Divider);
 // 引入全部样式
@@ -207,7 +181,8 @@ export default {
   data() {
     //这里存放数据
     return {
-      active:"",
+      active:0,
+      list:{}
     };
   },
   //监听属性 类似于data概念
@@ -215,11 +190,22 @@ export default {
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {},
+  methods: {
+    gitMyAXIOS(){
+      axios.get(`/api/index/ding.json`).then((res)=>{
+        console.log(res.data.douga)
+        this.list=res.data.douga
+      })
+
+      
+    }
+  },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+    this.gitMyAXIOS();
+  },
   beforeCreate() {}, //生命周期 - 创建之前
   beforeMount() {}, //生命周期 - 挂载之前
   beforeUpdate() {}, //生命周期 - 更新之前
@@ -234,11 +220,12 @@ export default {
   margin: 0;
   padding: 0;
 }
-
+.header{
+  margin-bottom: 40px;
+}
 .headtop {
-  width: 70%;
+  width: 100%;
   height: 50px;
-  float: left;
   font-size: 18px;
 }
 .appfriends {
@@ -251,14 +238,14 @@ export default {
   margin-top: 12px;
   font-size: 21px;
 }
-.ranking,
+/* .ranking,
 .dynamic,
 .Movemen-data,
 .exercise-course ,
 #Individual,
 .mayknow{
   width: 143%;
-}
+} */
 
 .ranking {
   height: 50px;
@@ -275,10 +262,9 @@ export default {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  /* float: right; */
+  float: right;
   margin-top: 10px;
   margin-right: 10px;
-  /* float: right; */
 }
 .dynamic {
   min-height: 50px;
@@ -387,6 +373,7 @@ export default {
   overflow: hidden;
   margin-top: 20px;
   min-height: 30px;
+  margin-bottom: 200px;
 }
 
 #Individual{
@@ -423,7 +410,7 @@ export default {
 .Individual-attention{
   width: 80px;
   height: 30px;
-  /* background-color: blueviolet; */
+  background-color: rgb(199, 196, 202);
   float: right;
   margin-top: 20px;
   margin-right: 20px;
@@ -462,6 +449,9 @@ export default {
   float: right;
   margin-right:20px ;
   margin-top: 5px;
+}
+.myimg{
+  margin-left: 5%;
 }
 
 
