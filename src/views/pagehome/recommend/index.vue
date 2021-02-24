@@ -127,7 +127,7 @@ export default {
 };
 </script>
 <style  scoped>
-#swipe {
+/* #swipe {
   margin-top: 50px;
-}
+} */
 </style>

@@ -1,9 +1,9 @@
 <!--  -->
 <template>
   <div id="content" class="">
-    <el-carousel :interval="4000" type="card" height="200px">
+    <el-carousel :interval="4000" type="card" height="140px">
       <el-carousel-item v-for="item in 6" :key="item">
-        <h3 class="medium">{{ item }}</h3>
+        <!-- <h3 class="medium">{{ item }}</h3> -->
       </el-carousel-item>
     </el-carousel>
     <!-- <div class="hot_swtich">
@@ -181,9 +181,9 @@ export default {
   opacity: 0.75;
   line-height: 200px;
 } */
-.el-carousel {
+/* .el-carousel {
   margin-top: 10px;
-}
+} */
 .el-carousel__item:nth-child(1n) {
   background: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg01.feiniu.com%2FC%2Fshow%2Fdetail%2Fimage%2F20150727%2Fe8576a37d377b5018adc11a630d0f5fd.jpg&refer=http%3A%2F%2Fimg01.feiniu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1616674902&t=00e84075854ca88a43edadee60718c5a);
   background-size: 100%;
