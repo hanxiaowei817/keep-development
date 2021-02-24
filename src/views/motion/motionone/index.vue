@@ -278,7 +278,7 @@ export default {
   /* float: right; */
   margin-top: 10px;
   margin-right: 10px;
-  float: right;
+  /* float: right; */
 }
 .dynamic {
   min-height: 50px;
