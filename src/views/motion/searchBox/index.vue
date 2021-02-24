@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         onClickLeft() {
-            Toast('返回')
+            // Toast('返回')
         history.go(-1)
         },
         
